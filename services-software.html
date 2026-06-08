@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom ERP &amp; Operations Software | Forvex Systems</title>
+<link rel="canonical" href="https://forvexsystems.com/services-software.html">
+<meta property="og:url" content="https://forvexsystems.com/services-software.html">
+<noscript><style>[data-anim]{opacity:1!important;transform:none!important}</style></noscript>
+<meta name="description" content="Custom ERP and operations software &mdash; estimation, BOQ, project costing, payroll, inventory, purchasing and document automation, built around how your business works.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Forvex Systems">
+<meta property="og:image" content="https://forvexsystems.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Forvex Systems — from spreadsheets to systems">
+<meta property="og:title" content="Custom ERP &amp; Operations Software &mdash; Forvex Systems">
+<meta property="og:description" content="Custom ERP and operations software &mdash; estimation, costing, payroll, inventory and document automation, built around your workflow.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://forvexsystems.com/og-image.png">
+<meta name="twitter:title" content="Custom ERP &amp; Operations Software &mdash; Forvex Systems">
+<meta name="twitter:description" content="Custom ERP and operations software &mdash; estimation, costing, payroll, inventory and document automation, built around your workflow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#0F172A; --muted:#64748B; --faint:#94A3B8;
+  --line:#E2E8F0; --soft:#F8FAFC; --soft2:#F1F5F9;
+  --accent:#EA580C; --accent-2:#FB923C; --accent-soft:#FFF1E8;
+  --dark:#0F172A; --dark-2:#1E293B;
+  --display:'Calistoga',Georgia,serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+  --r:18px; --rs:12px; --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* scroll progress */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:200;transition:width .1s linear}
+
+/* shared bits */
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.gt{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.logo{display:inline-flex;align-items:center;gap:11px;font-family:var(--display);font-size:25px;letter-spacing:-.02em}
+.logo .mark{flex:none;border-radius:10px;box-shadow:0 6px 16px -6px rgba(234,88,12,.6)}
+.logo .wm{line-height:1}
+.logo b{color:var(--accent);font-weight:400}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:none}
+.btn-p{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(234,88,12,.28)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(234,88,12,.36);background:#dc4f08}
+.btn .ar{transition:transform .2s}.btn:hover .ar{transform:translateX(4px)}
+
+/* dynamic island nav */
+header{position:fixed;top:14px;left:0;right:0;z-index:120;display:flex;justify-content:center;background:none;border:none;pointer-events:none;transition:top .35s cubic-bezier(.2,.8,.2,1)}
+header.scrolled{top:9px}
+.nav{pointer-events:auto;display:flex;align-items:center;gap:24px;height:58px;padding:0 12px 0 20px;background:rgba(15,23,42,.9);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(255,255,255,.09);border-radius:100px;box-shadow:0 14px 44px -14px rgba(15,23,42,.5),0 2px 10px rgba(0,0,0,.18);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;max-width:calc(100vw - 28px)}
+header.scrolled .nav{transform:scale(.965);box-shadow:0 20px 54px -14px rgba(15,23,42,.62),0 2px 10px rgba(0,0,0,.24)}
+header .logo{font-size:21px;color:#fff}
+.sysw{font-family:var(--body);font-weight:500;font-size:.5em;letter-spacing:.03em;opacity:.6}
+.nav-links{display:flex;gap:22px;align-items:center;margin:0 2px}
+.nav-links a{color:rgba(255,255,255,.72);font-size:14.5px;font-weight:500;padding:6px 2px;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav .btn-p{padding:10px 18px;font-size:14px;box-shadow:0 6px 18px rgba(234,88,12,.4)}
+.nav .btn-p:hover{box-shadow:0 10px 26px rgba(234,88,12,.5)}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:9px 11px;cursor:pointer}
+.menu-btn span{display:block;width:20px;height:2px;background:#fff;margin:4px 0;transition:.3s}
+.nav-cta-m{display:none}
+.has-drop{position:relative;display:inline-flex;align-items:center}
+.has-drop>a{display:inline-flex;align-items:center;gap:5px}
+.has-drop>a svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.4;opacity:.85;transition:transform .25s}
+.has-drop:hover>a svg{transform:rotate(180deg)}
+.drop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(12px);min-width:226px;background:rgba(15,23,42,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:8px;box-shadow:0 26px 54px -16px rgba(15,23,42,.65);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s}
+.has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(8px)}
+.drop::before{content:"";position:absolute;left:0;right:0;top:-16px;height:18px}
+.drop a{display:block!important;color:rgba(255,255,255,.8)!important;font-size:14px;padding:10px 12px;border-radius:11px;white-space:nowrap}
+.drop a:hover{background:rgba(255,255,255,.08);color:#fff!important}
+.drop a b{display:block;font-weight:600;color:#fff}
+.drop a em{display:block;font-style:normal;font-size:11.5px;color:rgba(255,255,255,.5);margin-top:1px}
+
+/* page */
+.chero{padding:128px 0 30px;position:relative}
+.chero h1{font-size:clamp(40px,6vw,68px);margin:18px 0 0;letter-spacing:-.01em}
+.chero p.sub{font-size:20px;color:var(--muted);margin-top:20px;max-width:560px}
+
+.cgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;padding:46px 0 100px;align-items:start}
+
+/* form */
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:38px;box-shadow:0 30px 70px -50px rgba(15,23,42,.35)}
+.field{margin-bottom:20px}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+.field input,.field select,.field textarea{width:100%;font-family:var(--body);font-size:15.5px;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:13px 15px;transition:border-color .2s,box-shadow .2s,background .2s}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px var(--accent-soft)}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:42px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.formcta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px}
+.formnote{font-size:13.5px;color:var(--faint)}
+.sent{display:none;background:var(--accent-soft);border:1px solid #FBD4BC;color:#9a3412;border-radius:14px;padding:16px 18px;font-size:14.5px;margin-top:18px}
+.sent.show{display:block}
+
+/* side */
+.aside h3{font-family:var(--display);font-size:24px;margin-bottom:8px}
+.aside p.lead{color:var(--muted);font-size:16px;margin-bottom:28px}
+.cinfo{display:flex;flex-direction:column;gap:2px;margin-bottom:30px}
+.cinfo a,.cinfo span{display:flex;align-items:center;gap:13px;padding:15px 0;border-bottom:1px solid var(--line);font-size:15.5px;transition:color .2s}
+.cinfo a:hover{color:var(--accent)}
+.cinfo .ico{width:38px;height:38px;flex:none;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center}
+.cinfo .ico svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.9}
+.cinfo .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:1px}
+.steps-mini{background:var(--dark);color:#fff;border-radius:20px;padding:28px;position:relative;overflow:hidden}
+.steps-mini:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(251,146,60,.32),transparent 65%);top:-90px;right:-70px}
+.steps-mini h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);position:relative}
+.steps-mini ol{list-style:none;margin-top:16px;position:relative}
+.steps-mini li{display:flex;gap:13px;padding:11px 0;font-size:15px;color:rgba(255,255,255,.86)}
+.steps-mini li b{font-family:var(--mono);color:var(--accent-2);font-size:13px;flex:none}
+
+/* footer */
+footer{padding:60px 0 40px}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:40px}
+.foot .logo{font-size:22px;color:var(--ink)}
+.foot>div:first-child p{color:var(--muted);font-size:14.5px;max-width:340px;margin-top:14px}
+.foot-links{display:flex;gap:40px;flex-wrap:wrap}
+.foot-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.foot-col a{display:block;color:var(--muted);font-size:14.5px;margin-bottom:9px;transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.copy{margin-top:40px;font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.04em}
+
+[data-anim]{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+[data-anim].in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  header .nav{gap:14px;padding:0 10px 0 16px;height:54px}
+  header .nav>.btn-p{display:none}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:fixed;top:74px;left:50%;transform:translateX(-50%);width:min(420px,calc(100vw - 28px));flex-direction:column;gap:6px;background:rgba(15,23,42,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:22px;box-shadow:0 26px 54px -16px rgba(15,23,42,.6)}
+  .nav-links.open a{color:rgba(255,255,255,.82);padding:11px 14px;border-radius:12px;font-size:15px}
+  .nav-links.open a:hover{background:rgba(255,255,255,.08);color:#fff}
+  .nav-links.open .has-drop{flex-direction:column;align-items:stretch;width:100%}
+  .nav-links.open .has-drop>a svg{display:none}
+  .nav-links.open .drop{position:static;opacity:1;visibility:visible;pointer-events:auto;transform:none;background:transparent;border:none;box-shadow:none;backdrop-filter:none;padding:0 0 0 10px;min-width:0}
+  .nav-links.open .drop::before{display:none}
+  .nav-links.open .drop a em{display:none}
+  .nav-cta-m{display:block!important;background:var(--accent);color:#fff!important;text-align:center;font-weight:600}
+  .menu-btn{display:block}
+  .cgrid{grid-template-columns:1fr;gap:36px;padding-bottom:70px}
+  .card{padding:26px}
+  .wrap{padding:0 18px}
+}
+@media(max-width:520px){.row2{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-anim]{opacity:1;transform:none}}
+</style>
+<style>
+.svc-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;padding:40px 0 20px;align-items:start}
+.svc-intro{font-size:19px;color:var(--muted);max-width:660px;margin-bottom:26px}
+.flist{list-style:none;display:grid;gap:13px;margin-top:6px}
+.flist li{display:flex;gap:13px;font-size:16px;color:var(--ink);line-height:1.5}
+.flist li:before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--accent);margin-top:2px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23EA580C' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+.svc-sec{padding:36px 0}
+.svc-sec h2{font-family:var(--display);font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+.svc-sec p.lead{color:var(--muted);font-size:17px;max-width:660px;margin-bottom:22px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.tags .t{border:1px solid var(--line);background:#fff;border-radius:100px;padding:9px 16px;font-size:14.5px;color:var(--muted)}
+.proofcard{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin-top:10px}
+.proofcard a{color:var(--accent);font-weight:600}
+.svc-final{background:linear-gradient(135deg,var(--accent),#c2410c);color:#fff;border-radius:30px;margin:50px 0 0;padding:64px 40px;text-align:center}
+.svc-final h2{font-family:var(--display);font-size:clamp(28px,4vw,42px);margin-bottom:14px}
+.svc-final p{max-width:540px;margin:0 auto 26px;font-size:17px;opacity:.94}
+.svc-final .btn-w{background:#fff;color:var(--accent)}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr;gap:34px}.svc-final{margin-left:16px;margin-right:16px}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="logo"><svg class="mark" width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="fgh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EA580C"/><stop offset="1" stop-color="#FB923C"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#fgh)"/><path d="M17 34 V15 H33" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 24.4 H28.5" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="33.5" cy="14.5" r="2.7" fill="#fff"/></svg><span class="wm">For<b>vex</b></span></a>
+    <nav class="nav-links" id="navlinks">
+      <span class="has-drop"><a href="index.html#what">Services <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><span class="drop"><a href="services-software.html"><b>Custom software</b><em>Operations software &amp; ERP</em></a><a href="services-web.html"><b>Websites &amp; e-commerce</b><em>Sites, stores &amp; web apps</em></a><a href="services-brand.html"><b>Brand &amp; identity</b><em>Logos, cards &amp; guidelines</em></a></span></span>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta-m">Build Now</a>
+    </nav>
+    <a href="contact.html" class="btn btn-p">Build Now <span class="ar">&rarr;</span></a>
+    <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<section class="chero"><div class="wrap"><span class="label" data-anim>Custom Software</span><h1 data-anim>Custom operations software &amp; <span class="gt">ERP</span>.</h1><p class="svc-intro" data-anim style="margin-top:20px">Off-the-shelf software never quite fits how your business actually runs &mdash; so you end up back in spreadsheets. We build the system that fits: estimation, costing, payroll, inventory and document automation, all in one place, shaped around your workflow.</p><a href="contact.html" class="btn btn-p" data-anim>Build Now <span class="ar">&rarr;</span></a></div></section><div class="wrap"><div class="svc-grid"><div data-anim><h2 style="font-family:var(--display);font-size:clamp(26px,3.5vw,34px);margin-bottom:18px">What we build</h2><ul class="flist"><li>Estimation &amp; quotation engines tuned to your real costing logic</li><li>Project cost tracking &mdash; estimate vs actual, live P&amp;L per job</li><li>BOQ generation and auto-calculated quotations</li><li>Payroll, attendance, allowances, advances &amp; payslips</li><li>Inventory &amp; asset tracking with depreciation</li><li>Purchase &amp; supplier management with payment tracking</li><li>Multi-entity, multi-currency from day one</li><li>Automated, branded PDF documents &amp; invoices</li><li>Custom dashboards &amp; internal tools</li></ul></div><div class="steps-mini" data-anim><h4>How it starts</h4><ol><li><b>01</b><span>Discovery &mdash; we learn how you estimate, cost and run jobs today.</span></li><li><b>02</b><span>Build one module first, fixed scope, so you see value fast.</span></li><li><b>03</b><span>Expand into a full system with ongoing support.</span></li></ol></div></div><section class="svc-sec" data-anim><h2>Built from the <span class="gt">operation</span>, not the code</h2><p class="lead">Most developers can write software but have never priced a job or watched a project margin slip. Forvex Systems was born out of running a real operation &mdash; so estimation, BOQ and project costing are a first language, not a requirements doc.</p><div class="proofcard">See it in production: the <a href="triocon.html">Triocon ERP case study &rarr;</a> &mdash; a full multi-entity custom ERP running a real business every day.</div></section><section class="svc-sec" data-anim><h2>Who it&rsquo;s for</h2><p class="lead">Any business that has outgrown its spreadsheets but finds off-the-shelf ERP too rigid or too expensive.</p><div class="tags"><span class="t">Manufacturers &amp; fabricators</span><span class="t">Contractors &amp; project businesses</span><span class="t">Trading companies</span><span class="t">Multi-entity groups</span><span class="t">Service businesses</span><span class="t">Anyone living in spreadsheets</span></div></section><div class="svc-final" data-anim><h2>Ready to replace the spreadsheets?</h2><p>Tell us the one process costing you the most time &mdash; we&rsquo;ll show you what it looks like as a system.</p><a href="contact.html" class="btn btn-w">Build Now <span class="ar">&rarr;</span></a></div></div>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="index.html" class="logo"><svg class="mark" width="30" height="30" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="fgf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EA580C"/><stop offset="1" stop-color="#FB923C"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#fgf)"/><path d="M17 34 V15 H33" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 24.4 H28.5" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="33.5" cy="14.5" r="2.7" fill="#fff"/></svg><span class="wm">For<b>vex</b> <span class="sysw">Systems</span></span></a>
+        <p>Custom operations software &amp; websites for businesses and individuals &mdash; across industries. From spreadsheets to systems.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col"><h4>Explore</h4><a href="services-software.html">Custom ERP &amp; software</a><a href="services-web.html">Websites &amp; e-commerce</a><a href="services-brand.html">Brand &amp; identity</a><a href="index.html#work">Work</a><a href="index.html#approach">Approach</a></div>
+        <div class="foot-col"><h4>Contact</h4><a href="mailto:build@forvexsystems.com">build@forvexsystems.com</a><a href="contact.html">Build Now</a></div>
+      </div>
+    </div>
+    <div class="copy">&copy; 2026 Forvex Systems &middot; From spreadsheets to systems</div>
+  </div>
+</footer>
+<script>
+var hdr=document.getElementById('hdr'),prog=document.getElementById('prog');
+function onScroll(){var st=window.pageYOffset||document.documentElement.scrollTop;hdr.classList.toggle('scrolled',st>10);var h=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=(h>0?(st/h*100):0)+'%';}
+window.addEventListener('scroll',function(){window.requestAnimationFrame(onScroll)},{passive:true});window.addEventListener('resize',onScroll,{passive:true});onScroll();
+var mb=document.getElementById('menuBtn'),nl=document.getElementById('navlinks');
+mb&&mb.addEventListener('click',function(){nl.classList.toggle('open')});
+nl&&nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open')})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'-30px'});
+document.querySelectorAll('[data-anim]').forEach(function(el){io.observe(el)});
+</script>
+
+<!-- WhatsApp floating contact -->
+<style>
+.wa-fab{position:fixed;right:22px;bottom:22px;z-index:300;display:flex;flex-direction:column;align-items:flex-end;gap:14px;font-family:var(--body,system-ui,sans-serif);pointer-events:none}
+.wa-fab>*{pointer-events:auto}
+.wa-pulse{position:fixed;right:22px;bottom:22px;width:60px;height:60px;border-radius:50%;background:#25D366;opacity:.5;animation:wapulse 2.6s ease-out infinite;z-index:299;pointer-events:none}
+@keyframes wapulse{0%{transform:scale(1);opacity:.4}70%{transform:scale(1.95);opacity:0}100%{opacity:0}}
+.wa-fab.open ~ .wa-pulse,.wa-fab.open .wa-pulse{display:none}
+.wa-toggle{width:60px;height:60px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -6px rgba(37,211,102,.55),0 4px 12px rgba(0,0,0,.18);transition:transform .25s}
+.wa-toggle:hover{transform:scale(1.06)}
+.wa-toggle svg{width:34px;height:34px;fill:#fff}
+.wa-toggle .wa-x{display:none}
+.wa-fab.open .wa-toggle .wa-ico{display:none}
+.wa-fab.open .wa-toggle .wa-x{display:block}
+.wa-card{width:300px;max-width:calc(100vw - 44px);background:#fff;border:1px solid #E2E8F0;border-radius:18px;box-shadow:0 28px 64px -20px rgba(15,23,42,.45);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(14px) scale(.97);transform-origin:bottom right;transition:opacity .25s,transform .25s,visibility .25s}
+.wa-fab.open .wa-card{opacity:1;visibility:visible;transform:none}
+.wa-head{background:#075E54;color:#fff;padding:15px 17px;display:flex;align-items:center;gap:12px}
+.wa-head .av{width:40px;height:40px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex:none}
+.wa-head .av svg{width:23px;height:23px;fill:#fff}
+.wa-head b{font-size:14.5px;display:block;line-height:1.3}
+.wa-head em{font-size:12px;opacity:.82;font-style:normal}
+.wa-body{padding:7px}
+.wa-opt{display:flex;align-items:center;gap:13px;padding:11px 12px;border-radius:12px;text-decoration:none;color:#0F172A;transition:background .15s}
+.wa-opt:hover{background:#F1F5F9}
+.wa-opt .flag{font-size:22px;flex:none;line-height:1}
+.wa-opt .info{flex:1;min-width:0}
+.wa-opt .info b{font-size:14.5px;display:block;font-weight:600}
+.wa-opt .info span{font-size:13px;color:#64748B}
+.wa-opt .go svg{width:18px;height:18px;display:block}
+.wa-foot{padding:8px 14px 13px;font-size:11px;color:#94A3B8;text-align:center;letter-spacing:.02em}
+@media(max-width:520px){.wa-fab,.wa-pulse{right:16px;bottom:16px}}
+</style>
+<div class="wa-fab" id="waFab">
+  <div class="wa-card">
+    <div class="wa-head"><span class="av"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.05 1.6 5.79L2 22l4.42-1.16a9.9 9.9 0 0 0 5.62 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-2.62.69.7-2.56-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.77-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01s-.43.06-.66.31c-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg></span><div><b>Chat on WhatsApp</b><em>Pick your region &mdash; we reply fast</em></div></div>
+    <div class="wa-body"><a class="wa-opt" href="https://wa.me/966550353864?text=Hi%20Forvex%20Systems%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener"><span class="flag">🇸🇦</span><span class="info"><b>Saudi Arabia</b><span>+966 55 035 3864</span></span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a><a class="wa-opt" href="https://wa.me/97334507478?text=Hi%20Forvex%20Systems%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener"><span class="flag">🇧🇭</span><span class="info"><b>Bahrain</b><span>+973 3450 7478</span></span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a><a class="wa-opt" href="https://wa.me/919744770223?text=Hi%20Forvex%20Systems%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener"><span class="flag">🇮🇳</span><span class="info"><b>India</b><span>+91 97447 70223</span></span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span></a></div>
+    <div class="wa-foot">Forvex Systems &middot; build@forvexsystems.com</div>
+  </div>
+  <button class="wa-toggle" id="waToggle" aria-label="Open WhatsApp chat">
+    <svg class="wa-ico" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.05 1.6 5.79L2 22l4.42-1.16a9.9 9.9 0 0 0 5.62 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-2.62.69.7-2.56-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.77-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01s-.43.06-.66.31c-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+    <svg class="wa-x" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</div>
+<div class="wa-pulse" id="waPulse"></div>
+<script>
+(function(){var f=document.getElementById('waFab'),t=document.getElementById('waToggle'),p=document.getElementById('waPulse');
+t.addEventListener('click',function(e){e.stopPropagation();var o=f.classList.toggle('open');if(p)p.style.display=o?'none':'block';});
+document.addEventListener('click',function(e){if(!f.contains(e.target)){f.classList.remove('open');if(p)p.style.display='block';}});})();
+</script>
+
+</body>
+</html>
