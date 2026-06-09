@@ -256,6 +256,23 @@ section{padding:90px 0;position:relative}
 .final p{font-size:19px;color:rgba(255,255,255,.9);margin:18px auto 34px;max-width:560px;position:relative}
 .final .btn-w{background:#fff;color:var(--accent);position:relative}
 .final .btn-w:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.2)}
+/* 72-Hour Prototype offer */
+.proto{background:var(--ink);border-radius:30px;margin:0 28px;padding:84px 56px;position:relative;overflow:hidden;color:#fff}
+.proto:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+.proto .p72{position:absolute;right:-20px;bottom:-40px;font-family:var(--display);font-size:clamp(200px,26vw,330px);line-height:1;color:transparent;-webkit-text-stroke:2px rgba(234,88,12,.4);pointer-events:none;user-select:none}
+.proto .badge-new{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-2);border:1px solid rgba(251,146,60,.45);border-radius:100px;padding:7px 15px;background:rgba(234,88,12,.13);position:relative}
+.proto .badge-new i{width:7px;height:7px;border-radius:50%;background:var(--accent-2);display:inline-block;animation:pdot 1.6s ease-in-out infinite}
+@keyframes pdot{0%,100%{opacity:1}50%{opacity:.3}}
+.proto h2{font-size:clamp(34px,4.8vw,56px);margin:24px 0 16px;position:relative;max-width:680px}
+.proto .plead{font-size:18.5px;color:rgba(255,255,255,.78);max-width:620px;position:relative;line-height:1.65}
+.proto .psteps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:44px 0 36px;position:relative;max-width:1000px}
+.proto .pstep{border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px 24px;background:rgba(255,255,255,.04)}
+.proto .pstep b{font-family:var(--mono);color:var(--accent-2);font-size:12px;letter-spacing:.12em;display:block;margin-bottom:9px;font-weight:600}
+.proto .pstep span{font-size:15px;color:rgba(255,255,255,.85);line-height:1.6}
+.proto .pfine{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-top:22px;position:relative}
+.proto .btn-p{position:relative}
+@media(max-width:860px){.proto .psteps{grid-template-columns:1fr}.proto{padding:64px 30px}.proto .p72{font-size:170px;right:-30px;bottom:-30px;opacity:.55}}
+@media(max-width:700px){.proto{margin:0 16px}}
 
 /* footer */
 footer{padding:60px 0 40px}
@@ -324,7 +341,7 @@ footer{padding:60px 0 40px}
   <div class="nav">
     <a href="index.html" class="logo"><svg class="mark" width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="fgh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EA580C"/><stop offset="1" stop-color="#FB923C"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#fgh)"/><path d="M17 34 V15 H33" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 24.4 H28.5" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="33.5" cy="14.5" r="2.7" fill="#fff"/></svg><span class="wm">For<b>vex</b></span></a>
     <nav class="nav-links" id="navlinks">
-      <span class="has-drop"><a href="#what">Services <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><span class="drop"><a href="services-software.html"><b>Custom software</b><em>Operations software &amp; ERP</em></a><a href="services-web.html"><b>Websites &amp; e-commerce</b><em>Sites, stores &amp; web apps</em></a><a href="services-brand.html"><b>Brand &amp; identity</b><em>Logos, cards &amp; guidelines</em></a></span></span>
+      <span class="has-drop"><a href="#what">Services <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><span class="drop"><a href="#prototype"><b>72-Hour Prototype</b><em>Free working demo &mdash; new</em></a><a href="services-software.html"><b>Custom software</b><em>Operations software &amp; ERP</em></a><a href="services-web.html"><b>Websites &amp; e-commerce</b><em>Sites, stores &amp; web apps</em></a><a href="services-brand.html"><b>Brand &amp; identity</b><em>Logos, cards &amp; guidelines</em></a></span></span>
       <a href="#work">Work</a>
       <a href="#approach">Approach</a>
       <a href="contact.html">Contact</a>
@@ -449,6 +466,23 @@ footer{padding:60px 0 40px}
         <div class="edge-card" data-anim="up"><div class="en">03</div><h3>Fast &amp; direct</h3><p>You work with the person who builds it. No agency layers, no account managers — just a system that ships.</p></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 72-HOUR PROTOTYPE OFFER -->
+<section id="prototype" style="padding:14px 0 30px">
+  <div class="proto" data-anim="scale">
+    <span class="p72" aria-hidden="true">72h</span>
+    <span class="badge-new" data-anim="up"><i></i>New &mdash; only at Forvex</span>
+    <h2 data-anim="up">We build it <span class="gt">before</span> you buy it.</h2>
+    <p class="plead" data-anim="up">Send us the spreadsheet that runs your business. In 72 hours you get a working prototype of it as real software &mdash; free, no commitment. If it clicks, we build it out. If not, you've lost nothing.</p>
+    <div class="psteps">
+      <div class="pstep" data-anim="up"><b>01 &mdash; Send</b><span>Share your messiest spreadsheet, or just describe the process that eats your week.</span></div>
+      <div class="pstep" data-anim="up"><b>02 &mdash; We forge</b><span>Within 72 hours we turn it into a clickable working system &mdash; your fields, your flow, sample data.</span></div>
+      <div class="pstep" data-anim="up"><b>03 &mdash; You decide</b><span>Judge with proof on screen, not promises and proposals. The demo is yours to keep either way.</span></div>
+    </div>
+    <a href="contact.html?need=proto#form" class="btn btn-p" data-anim="up">Claim your free prototype <span class="ar">&rarr;</span></a>
+    <p class="pfine" data-anim="up">One process per business &middot; prototype runs on sample data &middot; no card, no commitment</p>
   </div>
 </section>
 
@@ -600,7 +634,7 @@ footer{padding:60px 0 40px}
         <p>Custom operations software &amp; websites for businesses and individuals — across industries. From spreadsheets to systems.</p>
       </div>
       <div class="foot-links">
-        <div class="foot-col"><h4>Explore</h4><a href="services-software.html">Custom ERP &amp; software</a><a href="services-web.html">Websites &amp; e-commerce</a><a href="services-brand.html">Brand &amp; identity</a><a href="#what">What we do</a><a href="#work">Work</a><a href="#approach">Approach</a></div>
+        <div class="foot-col"><h4>Explore</h4><a href="#prototype">72-Hour Prototype</a><a href="services-software.html">Custom ERP &amp; software</a><a href="services-web.html">Websites &amp; e-commerce</a><a href="services-brand.html">Brand &amp; identity</a><a href="#what">What we do</a><a href="#work">Work</a><a href="#approach">Approach</a></div>
         <div class="foot-col"><h4>Contact</h4><a href="mailto:build@forvexsystems.com">build@forvexsystems.com</a><a href="contact.html">Build Now</a></div>
       </div>
     </div>

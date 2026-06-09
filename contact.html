@@ -164,7 +164,7 @@ footer{padding:60px 0 40px}
   <div class="nav">
     <a href="index.html" class="logo"><svg class="mark" width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="fgh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EA580C"/><stop offset="1" stop-color="#FB923C"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#fgh)"/><path d="M17 34 V15 H33" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 24.4 H28.5" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="33.5" cy="14.5" r="2.7" fill="#fff"/></svg><span class="wm">For<b>vex</b></span></a>
     <nav class="nav-links" id="navlinks">
-      <span class="has-drop"><a href="index.html#what">Services <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><span class="drop"><a href="services-software.html"><b>Custom software</b><em>Operations software &amp; ERP</em></a><a href="services-web.html"><b>Websites &amp; e-commerce</b><em>Sites, stores &amp; web apps</em></a><a href="services-brand.html"><b>Brand &amp; identity</b><em>Logos, cards &amp; guidelines</em></a></span></span>
+      <span class="has-drop"><a href="index.html#what">Services <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><span class="drop"><a href="index.html#prototype"><b>72-Hour Prototype</b><em>Free working demo &mdash; new</em></a><a href="services-software.html"><b>Custom software</b><em>Operations software &amp; ERP</em></a><a href="services-web.html"><b>Websites &amp; e-commerce</b><em>Sites, stores &amp; web apps</em></a><a href="services-brand.html"><b>Brand &amp; identity</b><em>Logos, cards &amp; guidelines</em></a></span></span>
       <a href="index.html#work">Work</a>
       <a href="index.html#approach">Approach</a>
       <a href="contact.html" class="active">Contact</a>
@@ -206,7 +206,8 @@ footer{padding:60px 0 40px}
         <div class="field">
           <label for="ptype">What do you need?</label>
           <select id="ptype" name="ptype">
-            <option>Custom operations software</option>
+            <option>The 72-Hour Prototype (free)</option>
+            <option selected>Custom operations software</option>
             <option>A website or web app</option>
             <option>Both — software &amp; web</option>
             <option>Not sure yet — let's talk</option>
@@ -258,7 +259,7 @@ footer{padding:60px 0 40px}
         <p>Custom operations software &amp; websites for businesses and individuals — across industries. From spreadsheets to systems.</p>
       </div>
       <div class="foot-links">
-        <div class="foot-col"><h4>Explore</h4><a href="services-software.html">Custom ERP &amp; software</a><a href="services-web.html">Websites &amp; e-commerce</a><a href="services-brand.html">Brand &amp; identity</a><a href="index.html#what">What we do</a><a href="index.html#work">Work</a><a href="index.html#approach">Approach</a></div>
+        <div class="foot-col"><h4>Explore</h4><a href="index.html#prototype">72-Hour Prototype</a><a href="services-software.html">Custom ERP &amp; software</a><a href="services-web.html">Websites &amp; e-commerce</a><a href="services-brand.html">Brand &amp; identity</a><a href="index.html#what">What we do</a><a href="index.html#work">Work</a><a href="index.html#approach">Approach</a></div>
         <div class="foot-col"><h4>Contact</h4><a href="mailto:build@forvexsystems.com">build@forvexsystems.com</a><a href="contact.html">Build Now</a></div>
       </div>
     </div>
@@ -357,5 +358,6 @@ t.addEventListener('click',function(e){e.stopPropagation();var o=f.classList.tog
 document.addEventListener('click',function(e){if(!f.contains(e.target)){f.classList.remove('open');if(p)p.style.display='block';}});})();
 </script>
 
+<script>try{if(new URLSearchParams(location.search).get("need")==="proto"){var pt=document.getElementById("ptype");pt.selectedIndex=0;}}catch(e){}</script>
 </body>
 </html>
