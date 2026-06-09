@@ -256,6 +256,16 @@ section{padding:90px 0;position:relative}
 .final p{font-size:19px;color:rgba(255,255,255,.9);margin:18px auto 34px;max-width:560px;position:relative}
 .final .btn-w{background:#fff;color:var(--accent);position:relative}
 .final .btn-w:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.2)}
+/* Pricing band */
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:30px 0 30px}
+.pcard{border:1px solid var(--line);border-radius:18px;padding:24px 22px;background:#fff;transition:transform .3s,box-shadow .3s,border-color .3s}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 24px 46px -28px rgba(15,23,42,.22);border-color:#FBD4BC}
+.pcard .pn{font-family:var(--mono);color:var(--accent);font-size:12px;letter-spacing:.12em}
+.pcard h3{font-size:18px;margin:12px 0 8px}
+.pcard p{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0}
+.price-note{color:var(--faint);font-size:13px;margin-top:4px}
+@media(max-width:860px){.price-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.price-grid{grid-template-columns:1fr}}
 /* 72-Hour Prototype offer */
 .proto{background:var(--ink);border-radius:30px;margin:0 28px;padding:84px 56px;position:relative;overflow:hidden;color:#fff}
 .proto:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
@@ -344,6 +354,7 @@ footer{padding:60px 0 40px}
       <span class="has-drop"><a href="#what">Services <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></a><span class="drop"><a href="#prototype"><b>72-Hour Prototype</b><em>Free working demo &mdash; new</em></a><a href="services-software.html"><b>Custom software</b><em>Operations software &amp; ERP</em></a><a href="services-web.html"><b>Websites &amp; e-commerce</b><em>Sites, stores &amp; web apps</em></a><a href="services-brand.html"><b>Brand &amp; identity</b><em>Logos, cards &amp; guidelines</em></a></span></span>
       <a href="#work">Work</a>
       <a href="#approach">Approach</a>
+      <a href="#pricing">Pricing</a>
       <a href="contact.html">Contact</a>
       <a href="contact.html" class="nav-cta-m">Build Now</a>
     </nav>
@@ -618,6 +629,25 @@ footer{padding:60px 0 40px}
   </div>
 </section>
 
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label" data-anim="up">05 — Pricing</span>
+      <h2 data-anim="up">Clear pricing, quoted to <span class="gt">your</span> scope.</h2>
+      <p data-anim="up">No guesswork and no hourly meter. We price each project to what you actually need, and write it down before we start — so there are no surprises later.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pcard" data-anim="up"><div class="pn">// 01</div><h3>Free to start</h3><p>See it working before you commit a cent — a free 72-hour prototype, then a fixed quote for the real build.</p></div>
+      <div class="pcard" data-anim="up"><div class="pn">// 02</div><h3>Fixed, not hourly</h3><p>One agreed price for a clearly defined scope. You always know what you&rsquo;re paying before any work begins.</p></div>
+      <div class="pcard" data-anim="up"><div class="pn">// 03</div><h3>Simple terms</h3><p>50% to begin, 50% on delivery. Hosting and other outside costs are shown openly — never buried.</p></div>
+      <div class="pcard" data-anim="up"><div class="pn">// 04</div><h3>Predictable to run</h3><p>An optional monthly care plan keeps your system hosted, supported and updated for one steady fee.</p></div>
+    </div>
+    <a href="contact.html?need=proto#form" class="btn btn-p" data-anim="up">Get a free prototype &amp; a quote <span class="ar">&rarr;</span></a>
+    <p class="price-note" data-anim="up">Every project is quoted individually. Tell us what you need and we&rsquo;ll send a clear, fixed price.</p>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="contact" style="padding:60px 0 80px">
   <div class="final" data-anim="scale">
@@ -635,7 +665,7 @@ footer{padding:60px 0 40px}
         <p>Custom operations software &amp; websites for businesses and individuals — across industries. From spreadsheets to systems.</p>
       </div>
       <div class="foot-links">
-        <div class="foot-col"><h4>Explore</h4><a href="#prototype">72-Hour Prototype</a><a href="services-software.html">Custom ERP &amp; software</a><a href="services-web.html">Websites &amp; e-commerce</a><a href="services-brand.html">Brand &amp; identity</a><a href="#what">What we do</a><a href="#work">Work</a><a href="#approach">Approach</a></div>
+        <div class="foot-col"><h4>Explore</h4><a href="#prototype">72-Hour Prototype</a><a href="services-software.html">Custom ERP &amp; software</a><a href="services-web.html">Websites &amp; e-commerce</a><a href="services-brand.html">Brand &amp; identity</a><a href="#what">What we do</a><a href="#work">Work</a><a href="#approach">Approach</a><a href="#pricing">Pricing</a></div>
         <div class="foot-col"><h4>Contact</h4><a href="mailto:build@forvexsystems.com">build@forvexsystems.com</a><a href="contact.html">Build Now</a></div>
       </div>
     </div>
