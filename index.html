@@ -400,31 +400,137 @@ footer{padding:60px 0 40px}
     
       </div>
       <style>
-.hero-trio{display:flex;flex-direction:column;gap:13px}
-.ht-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 17px;box-shadow:0 16px 38px -28px rgba(15,23,42,.32)}
-.ht-card .ht-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;display:block}
-.ht-soft-ui{margin-top:11px}
-.ht-bar{height:8px;border-radius:5px;background:var(--soft);border:1px solid var(--line);margin-bottom:7px;overflow:hidden}
-.ht-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-2),var(--accent))}
-.ht-srow{display:flex;justify-content:space-between;font-size:12.5px;margin-top:9px;color:var(--ink)}
-.ht-srow b{font-family:var(--mono);color:#15803D}
-.ht-browser{margin-top:11px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.ht-dots{display:flex;gap:5px;padding:7px 10px;background:var(--soft);border-bottom:1px solid var(--line)}
-.ht-dots i{width:7px;height:7px;border-radius:50%;background:#cbd5e1}
-.ht-page{height:58px;background:linear-gradient(135deg,#0F172A,#1E293B);position:relative}
-.ht-page:after{content:"";position:absolute;left:15px;top:21px;width:96px;height:9px;border-radius:5px;background:var(--accent)}
-.ht-page:before{content:"";position:absolute;left:15px;top:35px;width:140px;height:6px;border-radius:4px;background:rgba(255,255,255,.25)}
-.ht-brand-row{display:flex;align-items:center;gap:14px;margin-top:11px}
-.ht-mark{width:46px;height:46px;border-radius:12px;background:linear-gradient(140deg,var(--accent-2),var(--accent));color:#fff;font-family:var(--display);font-size:23px;display:flex;align-items:center;justify-content:center;flex:none}
-.ht-swatches{display:flex;gap:7px}
-.ht-swatches i{width:24px;height:24px;border-radius:6px;border:1px solid var(--line)}
-@media(max-width:920px){.hero-trio{flex-direction:row;flex-wrap:wrap}.ht-card{flex:1;min-width:170px}}
+/* hero studio showcase */
+.fx-show{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 34px 80px -38px rgba(15,23,42,.5);overflow:hidden;max-width:560px;width:100%}
+.fx-show:before{content:"";position:absolute;left:-1px;right:-1px;top:0;height:3px;background:linear-gradient(90deg,var(--accent-2),var(--accent));z-index:3}
+.fx-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#FBFAF8)}
+.fx-id{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--ink);font-weight:600}
+.fx-id .fx-m{width:22px;height:22px;border-radius:6px;background:linear-gradient(140deg,var(--accent-2),var(--accent));color:#fff;font-family:var(--display);font-size:13px;display:flex;align-items:center;justify-content:center}
+.fx-live{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fx-live i{width:7px;height:7px;border-radius:50%;background:#16a34a;animation:fxpulse 2s infinite}
+@keyframes fxpulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+.fx-stage{position:relative;height:334px;background:var(--soft)}
+.fx-scene{position:absolute;inset:0;padding:20px;opacity:0;transform:translateY(10px) scale(.992);transition:opacity .6s ease,transform .6s ease;pointer-events:none}
+.fx-scene.on{opacity:1;transform:none;pointer-events:auto}
+.fx-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-top:1px solid var(--line);background:#fff}
+.fx-cap{font-size:13.5px;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.fx-cap span{color:var(--muted);font-weight:400}
+.fx-dots{display:flex;gap:7px;flex:none}
+.fx-dot{width:26px;height:5px;border-radius:4px;background:var(--line);border:0;padding:0;cursor:pointer;overflow:hidden;position:relative}
+.fx-dot.on{background:#E7DDD2}
+.fx-dot.on:after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent-2),var(--accent));border-radius:4px}
+.fx-dot.on.run:after{animation:fxfill 3800ms linear forwards}
+@keyframes fxfill{to{width:100%}}
+:focus-visible.fx-dot{outline:2px solid var(--accent);outline-offset:3px}
+/* scene: software */
+.fx-soft{display:flex;flex-direction:column;gap:11px}
+.fx-soft .r{display:flex;gap:11px}
+.fx-tile{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 13px}
+.fx-tile .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fx-tile .v{font-family:var(--display);font-size:23px;margin-top:3px;color:var(--ink);line-height:1}
+.fx-tile .v.up{color:#16a34a}
+.fx-chart{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 13px;display:flex;align-items:flex-end;gap:7px;min-height:98px}
+.fx-chart i{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--accent-2),var(--accent))}
+.fx-list{background:#fff;border:1px solid var(--line);border-radius:12px;padding:4px 13px}
+.fx-li{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);padding:7px 0;border-bottom:1px dashed var(--line)}
+.fx-li:last-child{border-bottom:0}
+.fx-li b{font-family:var(--mono);color:var(--ink)}
+/* scene: web */
+.fx-brow{height:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.fx-url{display:flex;align-items:center;gap:9px;padding:9px 12px;background:var(--soft);border-bottom:1px solid var(--line)}
+.fx-url .d{display:flex;gap:5px}.fx-url .d i{width:8px;height:8px;border-radius:50%;background:#cbd5e1}
+.fx-url .a{flex:1;font-family:var(--mono);font-size:10px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+.fx-site{flex:1;display:flex;flex-direction:column}
+.fx-shero{background:linear-gradient(135deg,#0F172A,#1E293B);padding:18px;flex:1}
+.fx-shero .h{width:62%;height:13px;border-radius:5px;background:var(--accent)}
+.fx-shero .l{height:7px;border-radius:4px;background:rgba(255,255,255,.28);margin-top:9px;width:80%}
+.fx-shero .l2{width:54%}
+.fx-shero .b{width:84px;height:22px;border-radius:7px;background:#fff;margin-top:14px}
+.fx-cards{display:flex;gap:9px;padding:12px}
+.fx-cards i{flex:1;height:34px;border-radius:8px;background:var(--soft);border:1px solid var(--line)}
+/* scene: brand */
+.fx-brand{display:flex;flex-direction:column;gap:12px;height:100%}
+.fx-btop{display:flex;gap:12px;flex:1}
+.fx-bmark{width:118px;border-radius:14px;background:linear-gradient(140deg,var(--accent-2),var(--accent));color:#fff;font-family:var(--display);font-size:52px;display:flex;align-items:center;justify-content:center;flex:none}
+.fx-type{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;justify-content:center}
+.fx-type .aa{font-family:var(--display);font-size:42px;color:var(--ink);line-height:1}
+.fx-type .tl{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:9px;letter-spacing:.04em}
+.fx-sw{display:flex;gap:9px}
+.fx-sw i{flex:1;height:30px;border-radius:8px;border:1px solid rgba(15,23,42,.08)}
+.fx-word{font-family:var(--display);font-size:23px;color:var(--ink);text-align:center;letter-spacing:.4px}
+.fx-word b{color:var(--accent)}
+@media(max-width:920px){.fx-show{max-width:none}.fx-stage{height:300px}}
+@media (prefers-reduced-motion:reduce){.fx-live i,.fx-dot.on.run:after{animation:none}.fx-scene{transition:none}}
 </style>
-<div class="hero-trio" data-anim="rise" aria-label="What Forvex builds: software, websites and brands">
-  <div class="ht-card"><span class="ht-k">Operations software</span><div class="ht-soft-ui"><div class="ht-bar"><i style="width:72%"></i></div><div class="ht-bar"><i style="width:50%"></i></div><div class="ht-bar"><i style="width:88%"></i></div><div class="ht-srow"><span>Project margin</span><b>on track</b></div></div></div>
-  <div class="ht-card"><span class="ht-k">Websites</span><div class="ht-browser"><span class="ht-dots"><i></i><i></i><i></i></span><div class="ht-page"></div></div></div>
-  <div class="ht-card"><span class="ht-k">Brand &amp; identity</span><div class="ht-brand-row"><div class="ht-mark">F</div><div class="ht-swatches"><i style="background:#0F172A"></i><i style="background:#EA580C"></i><i style="background:#FB923C"></i><i style="background:#F1F5F9"></i></div></div></div>
+<div class="fx-show" data-anim="rise" aria-label="What Forvex builds: software, websites and brand">
+  <div class="fx-bar">
+    <span class="fx-id"><span class="fx-m">F</span>forvex&nbsp;·&nbsp;studio</span>
+    <span class="fx-live"><i></i>building</span>
+  </div>
+  <div class="fx-stage" id="fxStage">
+    <div class="fx-scene on fx-soft" data-cap="Operations software|systems that run the business">
+      <div class="r">
+        <div class="fx-tile"><div class="k">Project margin</div><div class="v up">+18%</div></div>
+        <div class="fx-tile"><div class="k">On time</div><div class="v">94%</div></div>
+      </div>
+      <div class="r"><div class="fx-chart"><i style="height:40%"></i><i style="height:64%"></i><i style="height:50%"></i><i style="height:82%"></i><i style="height:70%"></i><i style="height:95%"></i></div></div>
+      <div class="fx-list">
+        <div class="fx-li"><span>Estimation &rarr; quotation</span><b>auto</b></div>
+        <div class="fx-li"><span>Payroll &middot; 43 staff</span><b>run</b></div>
+      </div>
+    </div>
+    <div class="fx-scene fx-web" data-cap="Websites &amp; web apps|a presence that converts">
+      <div class="fx-brow">
+        <div class="fx-url"><span class="d"><i></i><i></i><i></i></span><span class="a">yourbusiness.com</span></div>
+        <div class="fx-site">
+          <div class="fx-shero"><div class="h"></div><div class="l"></div><div class="l l2"></div><div class="b"></div></div>
+          <div class="fx-cards"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="fx-scene fx-brand" data-cap="Brand &amp; identity|look as serious as you are">
+      <div class="fx-btop">
+        <div class="fx-bmark">F</div>
+        <div class="fx-type"><div class="aa">Aa</div><div class="tl">Calistoga &middot; Inter &middot; Mono</div></div>
+      </div>
+      <div class="fx-sw"><i style="background:#0F172A"></i><i style="background:#1E293B"></i><i style="background:#EA580C"></i><i style="background:#FB923C"></i><i style="background:#F1F5F9"></i></div>
+      <div class="fx-word">For<b>vex</b></div>
+    </div>
+  </div>
+  <div class="fx-foot">
+    <div class="fx-cap" id="fxCap">Operations software <span>&mdash; systems that run the business</span></div>
+    <div class="fx-dots" id="fxDots">
+      <button class="fx-dot on run" type="button" aria-label="Show operations software"></button>
+      <button class="fx-dot" type="button" aria-label="Show websites and web apps"></button>
+      <button class="fx-dot" type="button" aria-label="Show brand and identity"></button>
+    </div>
+  </div>
 </div>
+<script>
+(function(){
+  var stage=document.getElementById('fxStage'); if(!stage)return;
+  var scenes=stage.querySelectorAll('.fx-scene');
+  var dots=document.getElementById('fxDots').querySelectorAll('.fx-dot');
+  var cap=document.getElementById('fxCap');
+  var i=0,timer=null,DUR=3800;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n){
+    scenes[i].classList.remove('on'); dots[i].classList.remove('on','run');
+    i=n;
+    scenes[i].classList.add('on'); dots[i].classList.add('on');
+    var p=(scenes[i].getAttribute('data-cap')||'|').split('|');
+    cap.innerHTML=p[0]+' <span>&mdash; '+p[1]+'</span>';
+    if(!reduce){ void dots[i].offsetWidth; dots[i].classList.add('run'); }
+  }
+  function next(){ show((i+1)%scenes.length); }
+  function restart(){ if(reduce)return; clearInterval(timer); timer=setInterval(next,DUR); }
+  dots.forEach(function(d,n){ d.addEventListener('click',function(){ show(n); restart(); }); });
+  var wrap=stage.closest('.fx-show');
+  wrap.addEventListener('mouseenter',function(){ clearInterval(timer); });
+  wrap.addEventListener('mouseleave',restart);
+  if(!reduce){ timer=setInterval(next,DUR); }
+})();
+</script>
     </div>
   </div>
 </section>
