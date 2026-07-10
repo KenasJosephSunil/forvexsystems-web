@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>AuraWeaves</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1714; --ink70:rgba(27,23,20,.70); --ink45:rgba(27,23,20,.45);
+    --cream:#FCF7F2; --blush:#EBD9CF; --rose:#AE8478; --roseDk:#8C6559; --line:rgba(27,23,20,.12);
+    --disp:'Cormorant Garamond',serif; --body:'Jost',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{background:var(--cream);color:var(--ink);font-family:var(--body);overflow:hidden}
+  .app{height:100%;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .scroll::-webkit-scrollbar{display:none}
+
+  /* header */
+  .top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px}
+  .top .brand{font-family:var(--body);font-size:10.5px;letter-spacing:2.5px;color:var(--ink45)}
+  .icbtn{width:38px;height:38px;border-radius:50%;background:var(--cream);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+  .icbtn svg{width:20px;height:20px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .badge{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;border-radius:9px;background:var(--rose);color:#fff;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;padding:0 4px}
+
+  /* masthead */
+  .mast{text-align:center;padding:6px 16px 10px}
+  .mast img.logo{width:82px;height:82px;object-fit:contain;margin:0 auto}
+  .mast h1{font-family:var(--disp);font-weight:600;font-size:40px;line-height:1;letter-spacing:.5px;margin-top:2px}
+  .mast p{font-family:var(--disp);font-style:italic;font-size:17px;color:var(--ink70);margin-top:4px}
+
+  /* categories */
+  .cats{display:flex;gap:8px;overflow-x:auto;padding:8px 16px 14px}
+  .cats::-webkit-scrollbar{display:none}
+  .cat{flex:none;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;font-family:var(--body);font-size:13px;color:var(--ink70);cursor:pointer;white-space:nowrap}
+  .cat.on{background:var(--rose);border-color:var(--rose);color:#fff}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 16px 40px}
+  .card{cursor:pointer}
+  .card .imgwrap{position:relative;border-radius:14px;overflow:hidden;background:var(--blush);aspect-ratio:3/4}
+  .card .imgwrap img{width:100%;height:100%;object-fit:cover;display:block}
+  .card .tag{position:absolute;top:8px;left:8px;background:var(--cream);color:var(--roseDk);font-size:10px;font-weight:500;letter-spacing:.5px;padding:3px 8px;border-radius:6px}
+  .card .cat-l{font-size:10px;letter-spacing:1.5px;color:var(--rose);margin-top:9px}
+  .card h3{font-family:var(--disp);font-size:17px;font-weight:600;line-height:1.1;margin-top:3px}
+  .card .price{font-size:13px;color:var(--ink70);margin-top:3px}
+
+  /* product detail */
+  .screen{position:absolute;inset:0;background:var(--cream);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);z-index:5}
+  .screen.in{transform:translateX(0)}
+  .screen.sheet{transform:translateY(100%)}
+  .screen.sheet.in{transform:translateY(0)}
+  .pd-hero{position:relative;width:100%;aspect-ratio:3/4;background:var(--blush);flex:none}
+  .pd-hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .pd-float{position:absolute;top:12px;display:flex;width:100%;justify-content:space-between;padding:0 16px}
+  .pd-float .icbtn{background:var(--cream);box-shadow:0 4px 14px rgba(0,0,0,.12)}
+  .pd-body{flex:1;overflow-y:auto;padding:18px 18px 100px}
+  .pd-body::-webkit-scrollbar{display:none}
+  .pd-catl{font-size:11px;letter-spacing:1.5px;color:var(--rose)}
+  .pd-body h2{font-family:var(--disp);font-size:28px;font-weight:600;line-height:1.05;margin-top:4px}
+  .pd-price{font-family:var(--body);font-size:17px;font-weight:500;margin-top:8px}
+  .pd-desc{font-size:14px;line-height:1.6;color:var(--ink70);margin-top:14px}
+  .pd-lbl{font-size:12px;letter-spacing:1px;color:var(--ink45);margin:22px 0 10px}
+  .sizes{display:flex;gap:8px;flex-wrap:wrap}
+  .size{min-width:50px;padding:12px;border-radius:8px;border:1px solid var(--line);background:transparent;font-family:var(--body);font-size:14px;font-weight:500;cursor:pointer;text-align:center}
+  .size.on{background:var(--rose);border-color:var(--rose);color:#fff}
+  .specs{margin-top:22px;border-top:1px solid var(--line)}
+  .spec{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .spec .k{color:var(--ink45)} .spec .v{font-weight:500}
+
+  /* sticky add bar */
+  .addbar{position:absolute;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--cream);border-top:1px solid var(--line)}
+  .btn{width:100%;border:none;border-radius:14px;padding:16px;font-family:var(--body);font-size:15px;font-weight:600;letter-spacing:.3px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+  .btn-dark{background:var(--ink);color:var(--cream)}
+  .btn-dark:disabled{background:var(--ink45);cursor:default}
+  .btn svg{width:18px;height:18px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+  /* cart + checkout sheet */
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:16px}
+  .sheet-head h2{font-family:var(--disp);font-size:24px;font-weight:600}
+  .cart-list{flex:1;overflow-y:auto;padding:0 16px}
+  .cart-list::-webkit-scrollbar{display:none}
+  .citem{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .citem img{width:66px;height:84px;object-fit:cover;border-radius:8px;background:var(--blush);flex:none}
+  .citem .info{flex:1}
+  .citem .info h4{font-family:var(--disp);font-size:16px;font-weight:600}
+  .citem .info .sz{font-size:12px;color:var(--ink45);margin-top:2px}
+  .citem .info .pr{font-size:14px;font-weight:500;margin-top:8px}
+  .citem .right{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+  .trash{background:none;border:none;cursor:pointer;padding:2px}
+  .trash svg{width:17px;height:17px;stroke:var(--ink45);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .stepper{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+  .stepper button{background:none;border:none;cursor:pointer;font-size:16px;color:var(--ink);width:16px;line-height:1}
+  .stepper span{font-size:14px;font-weight:500;min-width:16px;text-align:center}
+  .summary{padding:16px 16px calc(16px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--blush)}
+  .srow{display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;color:var(--ink70)}
+  .srow.total{font-size:16px;font-weight:600;color:var(--ink)}
+  .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+  .empty svg{width:40px;height:40px;stroke:var(--ink45);stroke-width:1.6;fill:none;margin-bottom:16px}
+  .empty h3{font-family:var(--disp);font-size:22px;font-weight:600}
+  .empty p{font-size:14px;color:var(--ink70);margin-top:8px}
+
+  /* checkout */
+  .field{width:100%;font-family:var(--body);font-size:15px;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:15px 16px;margin-bottom:8px;background:transparent}
+  .field:focus{outline:none;border-color:var(--rose)}
+  textarea.field{min-height:74px;resize:none}
+  .pay{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:8px;cursor:pointer}
+  .pay.on{border-color:var(--rose);background:var(--blush)}
+  .pay .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--ink45);flex:none}
+  .pay.on .dot{border-color:var(--rose);background:var(--rose);box-shadow:inset 0 0 0 3px var(--cream)}
+  .pay span{font-size:15px;font-weight:500}
+  .co-body{flex:1;overflow-y:auto;padding:0 16px 100px}
+  .co-body::-webkit-scrollbar{display:none}
+
+  /* confirmation */
+  .done{position:absolute;inset:0;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:20;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+  .done.in{transform:translateY(0)}
+  .done .circ{width:72px;height:72px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center}
+  .done .circ svg{width:36px;height:36px;stroke:var(--cream);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .done h2{font-family:var(--disp);font-size:30px;font-weight:600;color:var(--cream);margin-top:22px}
+  .done p{font-size:14px;line-height:1.6;color:rgba(252,247,242,.72);margin-top:12px;max-width:280px}
+  .done button{margin-top:36px;background:var(--cream);color:var(--ink);border:none;border-radius:14px;padding:15px 26px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer}
+  .lbl{font-size:12px;letter-spacing:1px;color:var(--ink45);margin:6px 0 10px;font-weight:500}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- CATALOG -->
+  <div class="scroll" id="catalog">
+    <div class="top">
+      <span class="brand">AURAWEAVES · BOUTIQUE</span>
+      <button class="icbtn" onclick="openCart()" aria-label="Bag">
+        <svg viewBox="0 0 24 24"><path d="M6 2 L3 6 v14 a2 2 0 0 0 2 2 h14 a2 2 0 0 0 2 -2 V6 l-3 -4 Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10 a4 4 0 0 1 -8 0"/></svg>
+        <span class="badge" id="badge" style="display:none">0</span>
+      </button>
+    </div>
+    <div class="mast">
+      <img class="logo" src="https://www.auraweaves.in/assets/logo/sprig.svg" alt="AuraWeaves" onerror="this.style.display='none'">
+      <h1>AuraWeaves</h1>
+      <p>Woven for the woman you are.</p>
+    </div>
+    <div class="cats" id="cats"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <!-- PRODUCT DETAIL -->
+  <div class="screen" id="detail">
+    <div class="pd-hero">
+      <img id="pdImg" src="" alt="">
+      <div class="pd-float">
+        <button class="icbtn" onclick="closeDetail()" aria-label="Back">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="icbtn" onclick="openCart()" aria-label="Bag">
+          <svg viewBox="0 0 24 24"><path d="M6 2 L3 6 v14 a2 2 0 0 0 2 2 h14 a2 2 0 0 0 2 -2 V6 l-3 -4 Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10 a4 4 0 0 1 -8 0"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="pd-body">
+      <div class="pd-catl" id="pdCat"></div>
+      <h2 id="pdName"></h2>
+      <div class="pd-price" id="pdPrice"></div>
+      <div class="pd-desc" id="pdDesc"></div>
+      <div class="pd-lbl">SELECT SIZE</div>
+      <div class="sizes" id="pdSizes"></div>
+      <div class="specs" id="pdSpecs"></div>
+    </div>
+    <div class="addbar">
+      <button class="btn btn-dark" id="addBtn" disabled onclick="addCurrent()">Select a size</button>
+    </div>
+  </div>
+
+  <!-- CART -->
+  <div class="screen sheet" id="cart">
+    <div class="sheet-head">
+      <h2>Your bag</h2>
+      <button class="icbtn" onclick="closeCart()" aria-label="Close">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="cartInner" style="flex:1;display:flex;flex-direction:column;min-height:0"></div>
+  </div>
+
+  <!-- CHECKOUT -->
+  <div class="screen sheet" id="checkout">
+    <div class="sheet-head">
+      <h2>Checkout</h2>
+      <button class="icbtn" onclick="closeCheckout()" aria-label="Close">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="co-body">
+      <div class="lbl">DELIVERY DETAILS</div>
+      <input class="field" id="coName" placeholder="Full name" autocomplete="off">
+      <textarea class="field" id="coAddr" placeholder="Delivery address"></textarea>
+      <input class="field" id="coPhone" placeholder="Phone number" inputmode="tel" autocomplete="off">
+      <div class="lbl" style="margin-top:22px">PAYMENT</div>
+      <div id="payList"></div>
+      <div class="specs" style="margin-top:22px">
+        <div class="spec"><span class="k">Subtotal</span><span class="v" id="coSub"></span></div>
+        <div class="spec"><span class="k">Shipping</span><span class="v" id="coShip"></span></div>
+        <div class="spec"><span class="k" style="font-weight:600;color:var(--ink)">Total</span><span class="v" id="coTotal"></span></div>
+      </div>
+    </div>
+    <div class="addbar">
+      <button class="btn btn-dark" id="placeBtn" onclick="placeOrder()">Fill in your details</button>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div class="done" id="done">
+    <div class="circ"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2>Order placed</h2>
+    <p id="doneMsg"></p>
+    <button onclick="backToShop()">Back to the collection</button>
+  </div>
+
+</div>
+
+<script>
+const IMG = 'https://www.auraweaves.in/assets/img/';
+const money = n => '\u20B9' + n.toLocaleString('en-IN');
+const SHIP = 99, FREE_OVER = 2999;
+
+const PRODUCTS = [
+  {id:'peach', name:'Peach Brocade Co-ord Set', cat:'SETS', price:1900, img:'peach-brocade-set.jpg', tone:'#E7B39A', tag:'New',
+   desc:'A peach brocade crop top with a slit skirt - a co-ord set that carries every function in between.', fabric:'Brocade, lined', care:'Dry clean', sizes:['S','M','L','XL']},
+  {id:'emerald', name:'Emerald Rose Maxi', cat:'DRESSES', price:1650, img:'emerald-rose-maxi.jpg', tone:'#2E6E5E', tag:'New',
+   desc:'A jewel-emerald floral maxi with soft blouson sleeves. Falls neck-to-hem in one graceful line.', fabric:'Georgette, floral print', care:'Gentle hand wash', sizes:['S','M','L','XL']},
+  {id:'sage', name:'Sage Meadow Maxi', cat:'DRESSES', price:1600, img:'sage-meadow-maxi.jpg', tone:'#8B9377', tag:'New',
+   desc:'The Meadow maxi in a soft sage colourway. Botanical, breezy and endlessly re-wearable.', fabric:'Cotton-blend, printed', care:'Gentle hand wash', sizes:['S','M','L','XL']},
+  {id:'gold', name:'Gold Blossom', cat:'OCCASION', price:2000, img:'gold-blossom.jpg', tone:'#7A5B3A', tag:null,
+   desc:'A softly draped occasion dress traced with delicate gold blossoms. For the evening that deserves it.', fabric:'Chiffon, gold print', care:'Dry clean only', sizes:['S','M','L']},
+  {id:'rosewood', name:'Rosewood Blossom', cat:'DRESSES', price:1600, img:'rosewood-blossom.jpg', tone:'#C08A7D', tag:null,
+   desc:'A rosewood floral dress with a satin border and easy A-line fall. Quietly striking, endlessly wearable.', fabric:'Cotton-blend, printed', care:'Gentle hand wash', sizes:['S','M','L','XL']},
+  {id:'olive', name:'Olive Green Blossom', cat:'DRESSES', price:1600, img:'olive-green-blossom.jpg', tone:'#9A9375', tag:null,
+   desc:'An olive-green printed dress with a clean centre pleat. Understated, grown-up, and easy to love.', fabric:'Cotton-blend, printed', care:'Gentle hand wash', sizes:['S','M','L','XL']},
+  {id:'shimmer', name:'Shimmer Kaftan', cat:'MODEST', price:2000, img:'shimmer-kaftan.jpg', tone:'#4FB3C4', tag:null,
+   desc:'A turquoise shimmer kaftan that falls in soft folds. Throw it on and feel effortless.', fabric:'Shimmer georgette', care:'Hand wash cold', sizes:['Free Size']},
+];
+// graceful fallback: if a real photo fails to load, show a soft draped-fabric panel in the product tone
+function fallbackFabric(el, tone){
+  el.style.display='none';
+  const w=el.parentElement;
+  if(w.querySelector('.fabfall')) return;
+  const d=document.createElement('div');
+  d.className='fabfall';
+  d.style.cssText='position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,'+tone+' 0%,'+shade(tone,-14)+' 45%,'+tone+' 100%)';
+  d.innerHTML='<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(0,0,0,.12))"></div>';
+  w.appendChild(d);
+}
+function shade(hex,p){let n=parseInt(hex.slice(1),16),r=(n>>16)+p,g=((n>>8)&255)+p,b=(n&255)+p;
+  r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));
+  return '#'+(r<<16|g<<8|b).toString(16).padStart(6,'0');}
+const CATS = ['All','Dresses','Sets','Occasion','Modest'];
+
+let cart = [], cat = 'All', current = null, curSize = null, pay = 'UPI';
+
+// ---- render catalog ----
+function renderCats(){
+  document.getElementById('cats').innerHTML = CATS.map(c =>
+    `<button class="cat ${c===cat?'on':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+}
+function setCat(c){ cat=c; renderCats(); renderGrid(); }
+function renderGrid(){
+  const list = cat==='All' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===cat.toUpperCase());
+  document.getElementById('grid').innerHTML = list.map(p => `
+    <div class="card" onclick="openDetail('${p.id}')">
+      <div class="imgwrap">
+        <img loading="lazy" src="${IMG}${p.img}" alt="${p.name}" onerror="fallbackFabric(this,'${p.tone}')">
+        ${p.tag?`<span class="tag">${p.tag}</span>`:''}
+      </div>
+      <div class="cat-l">${p.cat}</div>
+      <h3>${p.name}</h3>
+      <div class="price">${money(p.price)}</div>
+    </div>`).join('');
+}
+
+// ---- product detail ----
+function openDetail(id){
+  current = PRODUCTS.find(p=>p.id===id); curSize=null;
+  const pdi=document.getElementById('pdImg'); const fb=pdi.parentElement.querySelector('.fabfall'); if(fb)fb.remove(); pdi.style.display='block'; pdi.onerror=()=>fallbackFabric(pdi,current.tone); pdi.src = IMG+current.img;
+  document.getElementById('pdCat').textContent = current.cat;
+  document.getElementById('pdName').textContent = current.name;
+  document.getElementById('pdPrice').textContent = money(current.price);
+  document.getElementById('pdDesc').textContent = current.desc;
+  document.getElementById('pdSizes').innerHTML = current.sizes.map(s=>
+    `<button class="size" onclick="pickSize(this,'${s}')">${s}</button>`).join('');
+  document.getElementById('pdSpecs').innerHTML =
+    `<div class="spec"><span class="k">Fabric</span><span class="v">${current.fabric}</span></div>
+     <div class="spec"><span class="k">Care</span><span class="v">${current.care}</span></div>
+     <div class="spec"><span class="k">Category</span><span class="v">${current.cat[0]+current.cat.slice(1).toLowerCase()}</span></div>`;
+  const b=document.getElementById('addBtn'); b.disabled=true; b.textContent='Select a size';
+  document.getElementById('detail').classList.add('in');
+}
+function closeDetail(){ document.getElementById('detail').classList.remove('in'); }
+function pickSize(el,s){
+  curSize=s;
+  document.querySelectorAll('#pdSizes .size').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+  const b=document.getElementById('addBtn'); b.disabled=false; b.textContent='Add to bag · '+money(current.price);
+}
+function addCurrent(){
+  const key=current.id+'|'+curSize;
+  const ex=cart.find(i=>i.key===key);
+  if(ex) ex.qty++; else cart.push({key,id:current.id,name:current.name,price:current.price,img:current.img,tone:current.tone,size:curSize,qty:1});
+  updateBadge();
+  const b=document.getElementById('addBtn'); b.textContent='Added to bag ✓';
+  setTimeout(()=>{ if(!document.getElementById('detail').classList.contains('in'))return;
+    b.textContent='Add to bag · '+money(current.price); },1300);
+}
+function updateBadge(){
+  const n=cart.reduce((s,i)=>s+i.qty,0);
+  const el=document.getElementById('badge');
+  if(n>0){ el.style.display='flex'; el.textContent=n; } else el.style.display='none';
+}
+
+// ---- cart ----
+function subtotal(){ return cart.reduce((s,i)=>s+i.qty*i.price,0); }
+function shipping(){ return subtotal()>=FREE_OVER?0:SHIP; }
+function openCart(){ renderCart(); document.getElementById('cart').classList.add('in'); }
+function closeCart(){ document.getElementById('cart').classList.remove('in'); }
+function renderCart(){
+  const inner=document.getElementById('cartInner');
+  if(cart.length===0){
+    inner.innerHTML=`<div class="empty">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 L3 6 v14 a2 2 0 0 0 2 2 h14 a2 2 0 0 0 2 -2 V6 l-3 -4 Z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10 a4 4 0 0 1 -8 0"/></svg>
+      <h3>Your bag is empty</h3><p>The pieces you love will wait for you here.</p>
+      <button class="btn btn-dark" style="width:auto;padding:14px 24px;margin-top:22px" onclick="closeCart()">Explore the collection</button>
+    </div>`;
+    return;
+  }
+  const sh=shipping();
+  inner.innerHTML=`
+    <div class="cart-list">${cart.map((i,idx)=>`
+      <div class="citem">
+        <img src="${IMG}${i.img}" alt="" onerror="fallbackFabric(this,'${i.tone}')">
+        <div class="info"><h4>${i.name}</h4><div class="sz">Size ${i.size}</div><div class="pr">${money(i.price*i.qty)}</div></div>
+        <div class="right">
+          <button class="trash" onclick="removeItem(${idx})"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
+          <div class="stepper"><button onclick="dec(${idx})">−</button><span>${i.qty}</span><button onclick="inc(${idx})">+</button></div>
+        </div>
+      </div>`).join('')}</div>
+    <div class="summary">
+      <div class="srow"><span>Subtotal</span><span>${money(subtotal())}</span></div>
+      <div class="srow"><span>Shipping</span><span>${sh===0?'Free':money(sh)}</span></div>
+      <div class="srow total"><span>Total</span><span>${money(subtotal()+sh)}</span></div>
+      <button class="btn btn-dark" style="margin-top:12px" onclick="openCheckout()">Checkout · ${money(subtotal()+sh)}</button>
+    </div>`;
+}
+function inc(i){ cart[i].qty++; updateBadge(); renderCart(); }
+function dec(i){ if(cart[i].qty<=1) cart.splice(i,1); else cart[i].qty--; updateBadge(); renderCart(); }
+function removeItem(i){ cart.splice(i,1); updateBadge(); renderCart(); }
+
+// ---- checkout ----
+const PAYS=['UPI','Card','Netbanking','Cash on delivery'];
+function openCheckout(){
+  document.getElementById('payList').innerHTML=PAYS.map(m=>
+    `<div class="pay ${m===pay?'on':''}" onclick="pickPay('${m}')"><span class="dot"></span><span>${m}</span></div>`).join('');
+  refreshCoTotals(); validateCo();
+  ['coName','coAddr','coPhone'].forEach(id=>document.getElementById(id).oninput=validateCo);
+  document.getElementById('checkout').classList.add('in');
+}
+function closeCheckout(){ document.getElementById('checkout').classList.remove('in'); }
+function pickPay(m){ pay=m; openCheckout(); }
+function refreshCoTotals(){
+  const sh=shipping();
+  document.getElementById('coSub').textContent=money(subtotal());
+  document.getElementById('coShip').textContent=sh===0?'Free':money(sh);
+  document.getElementById('coTotal').textContent=money(subtotal()+sh);
+}
+function validateCo(){
+  const ok=document.getElementById('coName').value.trim()&&document.getElementById('coAddr').value.trim()&&document.getElementById('coPhone').value.trim();
+  const b=document.getElementById('placeBtn');
+  b.disabled=!ok; b.style.background=ok?'':'var(--ink45)';
+  b.textContent=ok?('Place order · '+money(subtotal()+shipping())):'Fill in your details';
+}
+function placeOrder(){
+  if(document.getElementById('placeBtn').disabled) return;
+  const name=document.getElementById('coName').value.trim().split(' ')[0]||'lovely';
+  document.getElementById('doneMsg').textContent=`Thank you, ${name}. We'll confirm on WhatsApp shortly, and your pieces are being wrapped with care.`;
+  cart=[]; updateBadge();
+  document.getElementById('done').classList.add('in');
+}
+function backToShop(){
+  document.getElementById('done').classList.remove('in');
+  document.getElementById('checkout').classList.remove('in');
+  document.getElementById('cart').classList.remove('in');
+  document.getElementById('detail').classList.remove('in');
+  ['coName','coAddr','coPhone'].forEach(id=>document.getElementById(id).value='');
+}
+
+renderCats(); renderGrid();
+</script>
+</body>
+</html>
