@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start your 72-hour prototype - Forvex Systems</title>
+<meta name="description" content="Answer six quick questions and see your business working as real software in 72 hours - free.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%23EA580C'/%3E%3Cpath d='M17 34 V15 H33' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 24.4 H28.5' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round'/%3E%3Ccircle cx='33.5' cy='14.5' r='2.7' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F172A; --ink2:#1A243C; --line:#34415E;
+  --forge:#EA580C; --amber:#FB923C; --bone:#FCF7F2;
+  --slate3:#CBD5E1; --slate4:#94A3B8; --slate5:#64748B;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  background:var(--ink); color:var(--slate3);
+  font-family:Inter,system-ui,sans-serif;
+  background-image:radial-gradient(60% 45% at 50% 18%, rgba(234,88,12,.14), rgba(234,88,12,0) 70%);
+  background-repeat:no-repeat;
+}
+.stage{max-width:640px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:26px 22px 34px}
+
+/* header */
+.hd{display:flex;align-items:center;justify-content:space-between}
+.lockup{display:flex;align-items:center;gap:11px;text-decoration:none}
+.lockup svg{display:block}
+.wm{font-family:Calistoga,serif;font-size:21px;color:var(--bone)}
+.wm b{color:var(--amber);font-weight:400}
+.sysw{font-size:10px;letter-spacing:4px;color:var(--slate5);display:block;margin-top:1px}
+.exit{color:var(--slate5);text-decoration:none;font-size:13.5px}
+.exit:hover{color:var(--slate3)}
+
+/* tape progress */
+.tapewrap{margin:26px 0 6px}
+.tapelabel{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--slate5);margin-bottom:8px;display:flex;justify-content:space-between}
+.tapelabel .pct{color:var(--amber)}
+.tape{position:relative;height:18px;border-radius:6px;background:var(--ink2);border:1px solid var(--line);overflow:hidden}
+.tape .fill{position:absolute;inset:0;width:0%;background:linear-gradient(90deg,var(--forge),var(--amber));transition:width .45s cubic-bezier(.22,.9,.3,1)}
+.tape .ticks{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(15,23,42,.55) 0 2px,transparent 2px 14px);mix-blend-mode:multiply}
+
+/* steps */
+.steps{flex:1;display:flex;flex-direction:column;position:relative;margin-top:26px}
+.step{display:none;animation:in .35s ease both}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--forge);margin-bottom:10px}
+h1{font-family:Calistoga,serif;font-weight:400;color:var(--bone);font-size:clamp(26px,6vw,34px);line-height:1.18;margin-bottom:8px}
+.sub{color:var(--slate4);font-size:15px;line-height:1.6;margin-bottom:22px}
+
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:430px){.opts{grid-template-columns:1fr}}
+.opt{
+  border:1px solid var(--line);border-radius:14px;background:var(--ink2);
+  padding:15px 16px;cursor:pointer;user-select:none;
+  transition:border-color .18s,transform .12s,background .18s;
+  display:flex;align-items:center;gap:11px;
+}
+.opt:active{transform:scale(.985)}
+.opt .em{font-size:19px;line-height:1}
+.opt .t{font-size:14.5px;font-weight:600;color:var(--bone)}
+.opt .s{font-size:12px;color:var(--slate5);margin-top:2px}
+.opt.sel{border-color:var(--amber);background:#22180F}
+.opt.sel .t{color:var(--amber)}
+.opt .tick{margin-left:auto;width:19px;height:19px;border-radius:50%;border:1.6px solid var(--line);flex:none;position:relative}
+.opt.sel .tick{border-color:var(--amber);background:var(--amber)}
+.opt.sel .tick:after{content:"";position:absolute;left:5px;top:2px;width:5px;height:9px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(42deg)}
+
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;color:var(--slate5);margin-bottom:6px;font-family:'JetBrains Mono',monospace}
+.field input{
+  width:100%;padding:13px 15px;border-radius:12px;border:1px solid var(--line);
+  background:var(--ink2);color:var(--bone);font-size:15.5px;font-family:Inter,sans-serif;outline:none;
+}
+.field input:focus{border-color:var(--amber)}
+.hint{font-size:12.5px;color:var(--slate5);margin-top:-4px;margin-bottom:16px}
+
+.nav{display:flex;gap:10px;margin-top:24px}
+.btn{
+  flex:1;border:none;border-radius:999px;padding:15px 18px;font-size:15.5px;font-weight:700;
+  cursor:pointer;font-family:Inter,sans-serif;transition:transform .12s,opacity .18s;
+}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--forge);color:#fff}
+.btn.primary:disabled{opacity:.4;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--slate4);border:1px solid var(--line);flex:0 0 auto;padding:15px 20px}
+.btn.wa{background:#25D366;color:#08351B}
+.btn.mail{background:var(--ink2);color:var(--slate3);border:1px solid var(--line)}
+
+/* done screen */
+.done{text-align:center;padding-top:6vh}
+.done .bigtape{width:min(320px,80%);height:20px;border-radius:6px;margin:22px auto 8px;background:linear-gradient(90deg,var(--forge),var(--amber));position:relative;overflow:hidden}
+.done .bigtape:after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(15,23,42,.5) 0 2px,transparent 2px 16px)}
+.next{max-width:420px;margin:26px auto 0;text-align:left;border:1px solid var(--line);border-radius:16px;background:var(--ink2);padding:18px 20px}
+.next .r{display:flex;gap:12px;align-items:flex-start;padding:8px 0;font-size:14px;color:var(--slate4)}
+.next .n{font-family:Calistoga,serif;color:var(--amber);flex:none}
+.foot{margin-top:auto;padding-top:30px;text-align:center;font-size:12px;color:var(--slate5)}
+.foot a{color:var(--slate4);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="hd">
+    <a class="lockup" href="index.html">
+      <svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="13" fill="#EA580C"/><path d="M17 34 V15 H33" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 24.4 H28.5" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="33.5" cy="14.5" r="2.7" fill="#fff"/></svg>
+      <span><span class="wm">For<b>vex</b></span><span class="sysw">SYSTEMS</span></span>
+    </a>
+    <a class="exit" href="index.html">Exit</a>
+  </div>
+
+  <div class="tapewrap">
+    <div class="tapelabel"><span>// taking your measurements</span><span class="pct" id="pct">0%</span></div>
+    <div class="tape"><div class="fill" id="fill"></div><div class="ticks"></div></div>
+  </div>
+
+  <div class="steps" id="steps">
+
+    <!-- 1 business type (single) -->
+    <section class="step on" data-step="1">
+      <div class="kicker">// 1 of 6</div>
+      <h1>What does your business do?</h1>
+      <p class="sub">Tap the closest match - this shapes everything we suggest.</p>
+      <div class="opts" data-single="biz">
+        <div class="opt" data-v="Contracting / fabrication"><span class="em">🏗️</span><span><span class="t">Contracting / fabrication</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Trading / retail"><span class="em">📦</span><span><span class="t">Trading / retail</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Services"><span class="em">🛠️</span><span><span class="t">Services</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Food &amp; beverage"><span class="em">🍽️</span><span><span class="t">Food &amp; beverage</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Fashion / boutique"><span class="em">👗</span><span><span class="t">Fashion / boutique</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Something else"><span class="em">✨</span><span><span class="t">Something else</span></span><span class="tick"></span></div>
+      </div>
+    </section>
+
+    <!-- 2 what to build (multi) -->
+    <section class="step" data-step="2">
+      <div class="kicker">// 2 of 6</div>
+      <h1>What would you like us to build?</h1>
+      <p class="sub">Choose as many as you like.</p>
+      <div class="opts" data-multi="build">
+        <div class="opt" data-v="Operations software / ERP"><span class="em">⚙️</span><span><span class="t">Software / ERP</span><span class="s">estimates, payroll, inventory</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Website"><span class="em">🌐</span><span><span class="t">Website</span><span class="s">fast, clean, wins customers</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Online store"><span class="em">🛒</span><span><span class="t">Online store</span><span class="s">payments, stock, orders</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Mobile app"><span class="em">📱</span><span><span class="t">Mobile app</span><span class="s">iOS &amp; Android</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="CRM"><span class="em">🤝</span><span><span class="t">CRM</span><span class="s">leads &amp; follow-ups</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Brand identity"><span class="em">🎨</span><span><span class="t">Brand identity</span><span class="s">logo, cards, profile</span></span><span class="tick"></span></div>
+      </div>
+      <div class="nav"><button class="btn ghost" data-back>Back</button><button class="btn primary" data-next disabled>Continue</button></div>
+    </section>
+
+    <!-- 3 spreadsheets (multi) -->
+    <section class="step" data-step="3">
+      <div class="kicker">// 3 of 6</div>
+      <h1>What runs on spreadsheets today?</h1>
+      <p class="sub">Be honest - this is the part we love fixing.</p>
+      <div class="opts" data-multi="sheets">
+        <div class="opt" data-v="Estimates / quotations"><span class="em">🧮</span><span><span class="t">Estimates / quotations</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Payroll"><span class="em">💵</span><span><span class="t">Payroll</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Inventory / stock"><span class="em">📦</span><span><span class="t">Inventory / stock</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Invoicing"><span class="em">🧾</span><span><span class="t">Invoicing</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Client follow-ups"><span class="em">📇</span><span><span class="t">Client follow-ups</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Honestly, everything"><span class="em">😅</span><span><span class="t">Honestly, everything</span></span><span class="tick"></span></div>
+      </div>
+      <div class="nav"><button class="btn ghost" data-back>Back</button><button class="btn primary" data-next disabled>Continue</button></div>
+    </section>
+
+    <!-- 4 team size (single) -->
+    <section class="step" data-step="4">
+      <div class="kicker">// 4 of 6</div>
+      <h1>How big is the team?</h1>
+      <p class="sub">Rough is fine.</p>
+      <div class="opts" data-single="team">
+        <div class="opt" data-v="Just me"><span class="em">🙋</span><span><span class="t">Just me</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="2 - 5"><span class="em">👥</span><span><span class="t">2 - 5</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="6 - 20"><span class="em">🏢</span><span><span class="t">6 - 20</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="21 - 50"><span class="em">🏭</span><span><span class="t">21 - 50</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="50+"><span class="em">🌍</span><span><span class="t">50+</span></span><span class="tick"></span></div>
+      </div>
+    </section>
+
+    <!-- 5 hook (single) -->
+    <section class="step" data-step="5">
+      <div class="kicker">// 5 of 6</div>
+      <h1>Do you have the spreadsheet that runs your business?</h1>
+      <p class="sub">If yes, you are 72 hours away from seeing it working as real software - free, no obligation.</p>
+      <div class="opts" data-single="sheet72" style="grid-template-columns:1fr">
+        <div class="opt" data-v="Yes - I can share it on WhatsApp"><span class="em">📄</span><span><span class="t">Yes - I can share it on WhatsApp</span><span class="s">we will build your free prototype from it</span></span><span class="tick"></span></div>
+        <div class="opt" data-v="Not yet - let's talk first"><span class="em">💬</span><span><span class="t">Not yet - let's talk first</span><span class="s">no problem, we will take it from a conversation</span></span><span class="tick"></span></div>
+      </div>
+    </section>
+
+    <!-- 6 contact -->
+    <section class="step" data-step="6">
+      <div class="kicker">// 6 of 6</div>
+      <h1>Where should we reach you?</h1>
+      <p class="sub">Your measurements go straight to our team - you will hear back within one working day.</p>
+      <div class="field"><label>your name</label><input id="fname" type="text" autocomplete="name" placeholder="e.g. Ahmed Al Sayed"></div>
+      <div class="field"><label>company (optional)</label><input id="fco" type="text" autocomplete="organization" placeholder="e.g. Al Noor Trading"></div>
+      <div class="field"><label>whatsapp or email</label><input id="fcontact" type="text" inputmode="email" placeholder="+973 ... or you@company.com"></div>
+      <p class="hint">Tap a button below - your answers are packaged into one message. Nothing is stored on this page.</p>
+      <div class="nav" style="flex-direction:column">
+        <button class="btn wa" id="sendWa" disabled>Send via WhatsApp</button>
+        <button class="btn mail" id="sendMail" disabled>Send by email instead</button>
+        <button class="btn ghost" data-back style="align-self:center">Back</button>
+      </div>
+    </section>
+
+    <!-- done -->
+    <section class="step" data-step="7">
+      <div class="done">
+        <div class="kicker">// measurements taken</div>
+        <h1>Perfectly measured.</h1>
+        <p class="sub">Your details are on their way to us. Here is what happens next:</p>
+        <div class="bigtape"></div>
+        <div class="next">
+          <div class="r"><span class="n">1.</span><span>We review your measurements and reply within one working day.</span></div>
+          <div class="r"><span class="n">2.</span><span>If you shared a spreadsheet, we start your free 72-hour prototype.</span></div>
+          <div class="r"><span class="n">3.</span><span>You see your own operation working as real software - then decide. Fixed price, no surprises.</span></div>
+        </div>
+        <div class="nav" style="max-width:420px;margin:26px auto 0">
+          <a class="btn primary" style="text-align:center;text-decoration:none" href="index.html">Back to forvexsystems.com</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Forvex Systems - a division of Al Eden International Co W.L.L - <a href="https://forvexsystems.com">forvexsystems.com</a></div>
+</div>
+
+<script>
+(function(){
+  var answers = {biz:"", build:[], sheets:[], team:"", sheet72:""};
+  var order = [1,2,3,4,5,6,7];
+  var cur = 1;
+  var fill = document.getElementById('fill');
+  var pct = document.getElementById('pct');
+
+  function show(n){
+    cur = n;
+    document.querySelectorAll('.step').forEach(function(s){
+      s.classList.toggle('on', +s.dataset.step === n);
+    });
+    var p = Math.round(((n-1) / 6) * 100);
+    if (n === 7) p = 100;
+    fill.style.width = p + '%';
+    pct.textContent = p + '%';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  /* single-selects: pick and auto-advance */
+  document.querySelectorAll('[data-single]').forEach(function(group){
+    var key = group.dataset.single;
+    group.querySelectorAll('.opt').forEach(function(o){
+      o.addEventListener('click', function(){
+        group.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel');});
+        o.classList.add('sel');
+        answers[key] = o.dataset.v;
+        setTimeout(function(){ show(cur + 1); }, 260);
+      });
+    });
+  });
+
+  /* multi-selects: toggle, enable Continue */
+  document.querySelectorAll('[data-multi]').forEach(function(group){
+    var key = group.dataset.multi;
+    var stepEl = group.closest('.step');
+    var nextBtn = stepEl.querySelector('[data-next]');
+    group.querySelectorAll('.opt').forEach(function(o){
+      o.addEventListener('click', function(){
+        o.classList.toggle('sel');
+        answers[key] = Array.prototype.map.call(group.querySelectorAll('.opt.sel'), function(x){return x.dataset.v;});
+        nextBtn.disabled = answers[key].length === 0;
+      });
+    });
+    nextBtn.addEventListener('click', function(){ show(cur + 1); });
+  });
+
+  /* back buttons */
+  document.querySelectorAll('[data-back]').forEach(function(b){
+    b.addEventListener('click', function(){ show(Math.max(1, cur - 1)); });
+  });
+
+  /* contact validation */
+  var fname = document.getElementById('fname');
+  var fco = document.getElementById('fco');
+  var fcontact = document.getElementById('fcontact');
+  var waBtn = document.getElementById('sendWa');
+  var mailBtn = document.getElementById('sendMail');
+  function validate(){
+    var ok = fname.value.trim().length > 1 && fcontact.value.trim().length > 4;
+    waBtn.disabled = !ok; mailBtn.disabled = !ok;
+  }
+  [fname, fco, fcontact].forEach(function(i){ i.addEventListener('input', validate); });
+
+  function composeMessage(){
+    var L = [];
+    L.push('Hi Forvex! I just took my measurements on forvexsystems.com/start');
+    L.push('');
+    L.push('Name: ' + fname.value.trim() + (fco.value.trim() ? ' (' + fco.value.trim() + ')' : ''));
+    L.push('Business: ' + (answers.biz || '-'));
+    L.push('Team size: ' + (answers.team || '-'));
+    L.push('Looking to build: ' + (answers.build.join(', ') || '-'));
+    L.push('Running on spreadsheets: ' + (answers.sheets.join(', ') || '-'));
+    L.push('Spreadsheet for 72-hour prototype: ' + (answers.sheet72 || '-'));
+    L.push('Reach me at: ' + fcontact.value.trim());
+    return L.join('\n');
+  }
+
+  waBtn.addEventListener('click', function(){
+    var msg = composeMessage();
+    window.open('https://wa.me/97334507478?text=' + encodeURIComponent(msg), '_blank');
+    show(7);
+  });
+  mailBtn.addEventListener('click', function(){
+    var msg = composeMessage();
+    window.location.href = 'mailto:build@forvexsystems.com'
+      + '?subject=' + encodeURIComponent('72-hour prototype - ' + fname.value.trim())
+      + '&body=' + encodeURIComponent(msg);
+    setTimeout(function(){ show(7); }, 400);
+  });
+})();
+</script>
+</body>
+</html>
