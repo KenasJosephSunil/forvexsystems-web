@@ -200,12 +200,13 @@ h1{font-family:Calistoga,serif;font-weight:400;color:var(--bone);font-size:clamp
       <div class="field"><label>your name</label><input id="fname" type="text" autocomplete="name" placeholder="e.g. Ahmed Al Sayed"></div>
       <div class="field"><label>company (optional)</label><input id="fco" type="text" autocomplete="organization" placeholder="e.g. Al Noor Trading"></div>
       <div class="field"><label>whatsapp or email</label><input id="fcontact" type="text" inputmode="email" placeholder="+973 ... or you@company.com"></div>
-      <p class="hint">Tap a button below - your answers are packaged into one message. Nothing is stored on this page.</p>
+      <p class="hint">One tap - your answers go straight to the Forvex team.</p>
       <div class="nav" style="flex-direction:column">
-        <button class="btn wa" id="sendWa" disabled>Send via WhatsApp</button>
-        <button class="btn mail" id="sendMail" disabled>Send by email instead</button>
+        <button class="btn primary" id="sendSubmit" disabled>Submit my measurements</button>
+        <button class="btn wa" id="sendWa" disabled>Prefer WhatsApp? Send it there</button>
         <button class="btn ghost" data-back style="align-self:center">Back</button>
       </div>
+      <p class="hint" id="submitErr" style="display:none;color:#F87171;margin-top:10px">Could not send just now - please try again, or use the WhatsApp button.</p>
     </section>
 
     <!-- done -->
@@ -289,10 +290,11 @@ h1{font-family:Calistoga,serif;font-weight:400;color:var(--bone);font-size:clamp
   var fco = document.getElementById('fco');
   var fcontact = document.getElementById('fcontact');
   var waBtn = document.getElementById('sendWa');
-  var mailBtn = document.getElementById('sendMail');
+  var subBtn = document.getElementById('sendSubmit');
+  var errEl = document.getElementById('submitErr');
   function validate(){
     var ok = fname.value.trim().length > 1 && fcontact.value.trim().length > 4;
-    waBtn.disabled = !ok; mailBtn.disabled = !ok;
+    waBtn.disabled = !ok; subBtn.disabled = !ok;
   }
   [fname, fco, fcontact].forEach(function(i){ i.addEventListener('input', validate); });
 
@@ -315,12 +317,35 @@ h1{font-family:Calistoga,serif;font-weight:400;color:var(--bone);font-size:clamp
     window.open('https://wa.me/97334507478?text=' + encodeURIComponent(msg), '_blank');
     show(7);
   });
-  mailBtn.addEventListener('click', function(){
-    var msg = composeMessage();
-    window.location.href = 'mailto:build@forvexsystems.com'
-      + '?subject=' + encodeURIComponent('72-hour prototype - ' + fname.value.trim())
-      + '&body=' + encodeURIComponent(msg);
-    setTimeout(function(){ show(7); }, 400);
+  subBtn.addEventListener('click', function(){
+    errEl.style.display = 'none';
+    subBtn.disabled = true;
+    subBtn.textContent = 'Sending...';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+      body: JSON.stringify({
+        access_key: '93a2ddb7-5ee7-4a3f-ac71-410ef4102f77',
+        subject: '72-hour prototype - ' + fname.value.trim(),
+        from_name: 'Forvex /start wizard',
+        name: fname.value.trim(),
+        company: fco.value.trim(),
+        contact: fcontact.value.trim(),
+        business_type: answers.biz,
+        team_size: answers.team,
+        looking_to_build: answers.build.join(', '),
+        on_spreadsheets: answers.sheets.join(', '),
+        spreadsheet_for_prototype: answers.sheet72,
+        message: composeMessage()
+      })
+    }).then(function(r){ return r.json(); }).then(function(j){
+      if (j.success) { show(7); }
+      else { throw new Error('relay'); }
+    }).catch(function(){
+      errEl.style.display = 'block';
+      subBtn.disabled = false;
+      subBtn.textContent = 'Submit my measurements';
+    });
   });
 })();
 </script>
