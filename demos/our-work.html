@@ -25,9 +25,7 @@ a{color:inherit;text-decoration:none}
 header{padding:22px 0;position:sticky;top:0;background:rgba(15,23,42,.85);backdrop-filter:blur(10px);z-index:30;border-bottom:1px solid rgba(52,65,94,.5)}
 nav{display:flex;align-items:center;justify-content:space-between}
 .lock{display:flex;align-items:center;gap:11px}
-.ft{width:38px;height:38px;border-radius:10px;background:var(--forge);position:relative;flex:none}
-.ft::before{content:"";position:absolute;left:34%;top:25%;width:3.4px;height:52%;background:#fff;border-radius:2px;box-shadow:0 0 0 0 #fff}
-.ft::after{content:"";position:absolute;left:34%;top:25%;width:36%;height:3.4px;background:#fff;border-radius:2px}
+.ft{width:38px;height:38px;border-radius:10px;flex:none;display:block}
 .wm{font-family:Calistoga,serif;font-size:21px;color:var(--bone)}
 .wm b{color:var(--amber);font-weight:400}
 .navcta{padding:10px 18px;border-radius:22px;background:var(--forge);color:#fff;font-weight:600;font-size:14px}
@@ -105,7 +103,7 @@ html{scroll-behavior:smooth}
 
 <header>
   <div class="wrap"><nav>
-    <a href="https://forvexsystems.com" class="lock"><span class="ft"></span><span class="wm">For<b>vex</b></span></a>
+    <a href="https://forvexsystems.com" class="lock"><svg class="ft" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Forvex"><rect width="48" height="48" rx="13" fill="#EA580C"/><path d="M17 34 V15 H33" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 24.4 H28.5" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><circle cx="33.5" cy="14.5" r="2.7" fill="#fff"/></svg><span class="wm">For<b>vex</b></span></a>
     <a href="https://forvexsystems.com/start" class="navcta">Start your prototype</a>
   </nav></div>
 </header>
@@ -120,7 +118,7 @@ html{scroll-behavior:smooth}
 <div class="wrap">
   <div class="grid">
 
-    <a class="demo hoverlift reveal" href="erp-demo.html" style="--acc:#A78BFA">
+    <a class="demo hoverlift reveal" href="/demos/erp" style="--acc:#A78BFA">
       <div class="shot"><div class="mock m-erp"><div class="top"><b></b><b></b><b></b><b></b></div><div class="bars"><i style="height:40%"></i><i style="height:60%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:65%"></i><i style="height:95%"></i></div></div></div>
       <div class="body">
         <div class="kind">Custom software · ERP</div>
@@ -134,7 +132,7 @@ html{scroll-behavior:smooth}
       </div>
     </a>
 
-    <a class="demo hoverlift reveal d1" href="demo-store.html" style="--acc:#C0A860">
+    <a class="demo hoverlift reveal d1" href="/demos/store" style="--acc:#C0A860">
       <div class="shot"><div class="mock m-store"><div class="prods"><i></i><i></i><i></i></div></div></div>
       <div class="body">
         <div class="kind">Website · e-commerce</div>
@@ -148,7 +146,7 @@ html{scroll-behavior:smooth}
       </div>
     </a>
 
-    <a class="demo hoverlift reveal d2" href="demo-contractor.html" style="--acc:#D8A800">
+    <a class="demo hoverlift reveal d2" href="/demos/contractor" style="--acc:#D8A800">
       <div class="shot"><div class="mock m-con"><div class="grid3"><i></i><i></i><i></i><i></i></div></div></div>
       <div class="body">
         <div class="kind">Website · corporate</div>
@@ -162,7 +160,7 @@ html{scroll-behavior:smooth}
       </div>
     </a>
 
-    <a class="demo hoverlift reveal d3" href="demo-restaurant.html" style="--acc:#C2410C">
+    <a class="demo hoverlift reveal d3" href="/demos/restaurant" style="--acc:#C2410C">
       <div class="shot"><div class="mock m-rest"></div></div>
       <div class="body">
         <div class="kind">Website · hospitality</div>
