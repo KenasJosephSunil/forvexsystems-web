@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bayt Al Bahar - Seafood Restaurant - a Forvex Systems demo</title>
+<meta name="description" content="A sample restaurant website built by Forvex Systems.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%23EA580C'/%3E%3Cpath d='M17 34 V15 H33' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 24.4 H28.5' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round'/%3E%3Ccircle cx='33.5' cy='14.5' r='2.7' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F6F1E7; --sand2:#EFE7D6; --deep:#0E3A38; --deep2:#12504C;
+  --brass:#C08A3E; --brass2:#D4A45A; --coral:#C25A3E; --ink:#213330; --mut:#6C7C77;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:Jost,system-ui,sans-serif;font-size:16px;line-height:1.6}
+.serif{font-family:Fraunces,serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+
+/* demo ribbon */
+.ribbon{background:#0E3A38;color:#EAD9B6;text-align:center;padding:9px;font-size:13px;font-family:Jost}
+.ribbon a{color:var(--brass2);font-weight:600;text-decoration:none;border-bottom:1px solid var(--brass2)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:40;background:rgba(246,241,231,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,58,56,.1)}
+.navin{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;max-width:1180px;margin:0 auto}
+.logo{font-family:Fraunces;font-size:23px;font-weight:600;color:var(--deep);letter-spacing:-.3px}
+.logo span{color:var(--brass)}
+.navlinks{display:flex;gap:30px;align-items:center}
+.navlinks a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:400;transition:color .2s}
+.navlinks a:hover{color:var(--brass)}
+.btn{background:var(--deep);color:var(--sand);padding:11px 22px;border-radius:40px;font-weight:500;font-size:14px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .12s;display:inline-block}
+.btn:hover{background:var(--deep2)}
+.btn:active{transform:scale(.97)}
+.btn.brass{background:var(--brass)}.btn.brass:hover{background:var(--brass2)}
+.menutoggle{display:none;background:none;border:none;cursor:pointer;color:var(--deep)}
+
+/* hero */
+.hero{position:relative;padding:90px 0 100px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--brass);font-weight:500;margin-bottom:18px}
+.hero h1{font-family:Fraunces;font-size:60px;line-height:1.04;font-weight:500;color:var(--deep);letter-spacing:-1px;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.hero p{font-size:18px;color:var(--mut);max-width:440px;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-visual{position:relative;height:460px;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,#12504C,#0E3A38);box-shadow:0 30px 60px -20px rgba(14,58,56,.5)}
+.plate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.plate svg{width:78%;height:78%;opacity:.92}
+.badge-float{position:absolute;bottom:22px;left:22px;right:22px;background:rgba(246,241,231,.95);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(6px)}
+.badge-float .bt{font-family:Fraunces;font-size:17px;color:var(--deep);font-weight:600}
+.badge-float .bs{font-size:13px;color:var(--mut)}
+.stars{color:var(--brass);font-size:15px;letter-spacing:2px}
+
+/* strip */
+.strip{background:var(--deep);color:var(--sand);padding:26px 0}
+.strip-in{display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px;text-align:center}
+.strip .n{font-family:Fraunces;font-size:30px;font-weight:600;color:var(--brass2)}
+.strip .l{font-size:13px;letter-spacing:1px;opacity:.8;text-transform:uppercase}
+
+/* section */
+section{padding:80px 0}
+.sec-head{text-align:center;max-width:600px;margin:0 auto 50px}
+.sec-head .eyebrow{margin-bottom:12px}
+.sec-head h2{font-family:Fraunces;font-size:40px;font-weight:500;color:var(--deep);letter-spacing:-.5px}
+.sec-head p{color:var(--mut);margin-top:12px}
+
+/* menu */
+.menu-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+.tab{padding:9px 20px;border-radius:30px;border:1px solid rgba(14,58,56,.2);background:none;cursor:pointer;font-family:Jost;font-size:14px;color:var(--ink);transition:all .2s}
+.tab.on{background:var(--deep);color:var(--sand);border-color:var(--deep)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 44px;max-width:900px;margin:0 auto}
+.dish{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px dashed rgba(14,58,56,.18)}
+.dish .dn{font-family:Fraunces;font-size:19px;font-weight:600;color:var(--deep)}
+.dish .dd{font-size:14px;color:var(--mut);margin-top:3px}
+.dish .dp{font-family:Fraunces;font-size:18px;font-weight:600;color:var(--brass);white-space:nowrap}
+.dish .tagv{display:inline-block;font-size:10px;letter-spacing:1px;color:var(--deep2);border:1px solid var(--deep2);border-radius:20px;padding:1px 7px;margin-left:8px;vertical-align:middle}
+.menugroup{display:none}.menugroup.on{display:grid;grid-template-columns:1fr 1fr;gap:14px 44px;max-width:900px;margin:0 auto}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gcell{aspect-ratio:1;border-radius:14px;overflow:hidden;position:relative;background:var(--deep)}
+.gcell svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* reservation */
+.resv{background:var(--deep);border-radius:24px;padding:54px;color:var(--sand);display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.resv h2{font-family:Fraunces;font-size:36px;font-weight:500;margin-bottom:14px}
+.resv p{opacity:.85;margin-bottom:8px}
+.resv .hours{margin-top:24px;font-size:14px}
+.resv .hours div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.12);max-width:300px}
+.rform{background:var(--sand);border-radius:16px;padding:28px;color:var(--ink)}
+.rform label{font-size:12px;letter-spacing:.5px;color:var(--mut);text-transform:uppercase;display:block;margin-bottom:6px}
+.rform .field{margin-bottom:14px}
+.rform input,.rform select{width:100%;padding:12px 14px;border:1px solid rgba(14,58,56,.2);border-radius:10px;font-family:Jost;font-size:15px;background:#fff;color:var(--ink)}
+.rrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rmsg{display:none;background:var(--deep2);color:var(--sand);border-radius:10px;padding:14px;font-size:14px;margin-top:6px}
+
+/* footer */
+footer{background:var(--deep);color:var(--sand);padding:60px 0 30px;margin-top:20px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot h4{font-family:Fraunces;font-size:20px;margin-bottom:14px;color:var(--brass2)}
+.foot p,.foot a{color:rgba(246,241,231,.75);font-size:14px;text-decoration:none;display:block;margin-bottom:8px}
+.foot a:hover{color:var(--brass2)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;text-align:center;font-size:13px;opacity:.6}
+
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}.hero h1{font-size:44px}
+  .hero-visual{height:340px}
+  .menu-grid,.menugroup.on{grid-template-columns:1fr}
+  .resv{grid-template-columns:1fr;padding:34px}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr}
+  .navlinks{display:none}.menutoggle{display:block}
+  .hero h1{font-size:40px}
+}
+/* --- motion layer (2026) --- */
+@media(prefers-reduced-motion:no-preference){
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.9,.3,1),transform .7s cubic-bezier(.22,.9,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+}
+.hoverlift{transition:transform .25s cubic-bezier(.22,.9,.3,1),box-shadow .25s}
+.hoverlift:hover{transform:translateY(-6px)}
+a,button,.chip,.navitem{transition:all .2s ease}
+::selection{background:rgba(234,88,12,.3)}
+html{scroll-behavior:smooth}
+
+</style>
+</head>
+<body>
+
+<div class="ribbon">⚡ DEMO - a sample website for a fictional restaurant, by Forvex Systems &nbsp; <a href="https://forvexsystems.com/start">Build yours →</a></div>
+
+<nav>
+  <div class="navin">
+    <div class="logo">Bayt <span>Al Bahar</span></div>
+    <div class="navlinks">
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">Our story</a>
+      <a href="#reserve">Contact</a>
+      <a href="#reserve" class="btn brass">Reserve a table</a>
+    </div>
+    <button class="menutoggle" onclick="document.querySelector('.navlinks').style.display='flex';this.style.display='none'"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+  </div>
+</nav>
+
+<!-- hero -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Seafood · Kingdom of Bahrain</div>
+      <h1>The sea, <em>served</em> the way it should be.</h1>
+      <p>Line-caught from Gulf waters each morning, grilled over charcoal, and plated with a little theatre. Since 2014, in the heart of Manama.</p>
+      <div class="hero-cta">
+        <a href="#reserve" class="btn">Reserve a table</a>
+        <a href="#menu" class="btn brass">See the menu</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="plate">
+        <svg viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="88" fill="#F6F1E7" opacity=".95"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#C08A3E" stroke-width="1.5" opacity=".5"/>
+          <path d="M55 105 Q100 60 148 100 Q120 118 100 116 Q78 118 55 105Z" fill="#C25A3E"/>
+          <path d="M148 100 l16 -8 -4 9 4 9 -16 -8Z" fill="#C25A3E"/>
+          <circle cx="72" cy="98" r="3.5" fill="#0E3A38"/>
+          <path d="M60 108 Q100 96 140 106" stroke="#0E3A38" stroke-width="1.5" fill="none" opacity=".6"/>
+          <path d="M80 130 q6 -6 12 0 M100 132 q6 -6 12 0 M120 130 q6 -6 12 0" stroke="#12504C" stroke-width="2.5" fill="none" opacity=".7"/>
+          <circle cx="66" cy="74" r="5" fill="#C08A3E" opacity=".85"/>
+          <circle cx="134" cy="74" r="5" fill="#12504C" opacity=".7"/>
+        </svg>
+      </div>
+      <div class="badge-float">
+        <div><div class="bt">4.8 on Google</div><div class="bs">over 1,900 reviews</div></div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap strip-in">
+    <div><div class="n">12</div><div class="l">Years serving Bahrain</div></div>
+    <div><div class="n">Daily</div><div class="l">Fresh Gulf catch</div></div>
+    <div><div class="n">4.8★</div><div class="l">Google rating</div></div>
+    <div><div class="n">120</div><div class="l">Seats · sea view</div></div>
+  </div>
+</div>
+
+<!-- menu -->
+<section class="reveal" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Our kitchen</div>
+      <h2>A menu that changes with the tide</h2>
+      <p>What the boats bring in decides what we cook. Here is today.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab on" data-g="starters">Starters</button>
+      <button class="tab" data-g="grill">From the grill</button>
+      <button class="tab" data-g="rice">Rice &amp; more</button>
+      <button class="tab" data-g="sweet">Sweet</button>
+    </div>
+    <div class="menugroup on" id="starters">
+      <div class="dish"><div><div class="dn">Bahraini fish cakes</div><div class="dd">Hammour, coriander, lime aioli</div></div><div class="dp">2.400</div></div>
+      <div class="dish"><div><div class="dn">Grilled prawn skewers</div><div class="dd">Charcoal, garlic butter, chili</div></div><div class="dp">3.900</div></div>
+      <div class="dish"><div><div class="dn">Calamari, twice-cooked</div><div class="dd">Saffron mayo, pickled lemon</div></div><div class="dp">3.200</div></div>
+      <div class="dish"><div><div class="dn">Muhammar arancini <span class="tagv">VEG</span></div><div class="dd">Sweet rice, date, rose</div></div><div class="dp">2.600</div></div>
+    </div>
+    <div class="menugroup" id="grill">
+      <div class="dish"><div><div class="dn">Whole hammour</div><div class="dd">Charcoal-grilled, herb crust, market size</div></div><div class="dp">9.500</div></div>
+      <div class="dish"><div><div class="dn">Kingfish steak</div><div class="dd">Bezar spice, burnt lime</div></div><div class="dp">6.800</div></div>
+      <div class="dish"><div><div class="dn">Tiger prawns, half kilo</div><div class="dd">Garlic, chili, coriander</div></div><div class="dp">8.200</div></div>
+      <div class="dish"><div><div class="dn">Lobster, Gulf-caught</div><div class="dd">Brown butter, sea salt · seasonal</div></div><div class="dp">14.000</div></div>
+    </div>
+    <div class="menugroup" id="rice">
+      <div class="dish"><div><div class="dn">Sayadiyah</div><div class="dd">Spiced fish rice, caramelised onion</div></div><div class="dp">5.400</div></div>
+      <div class="dish"><div><div class="dn">Prawn machboos</div><div class="dd">Loomi, baharat, crispy shallot</div></div><div class="dp">5.900</div></div>
+      <div class="dish"><div><div class="dn">Seafood biryani</div><div class="dd">Mixed catch, saffron</div></div><div class="dp">6.200</div></div>
+      <div class="dish"><div><div class="dn">Grilled veg platter <span class="tagv">VEG</span></div><div class="dd">Charred seasonal, tahini</div></div><div class="dp">3.800</div></div>
+    </div>
+    <div class="menugroup" id="sweet">
+      <div class="dish"><div><div class="dn">Date pudding</div><div class="dd">Khanfaroosh, cardamom cream</div></div><div class="dp">2.400</div></div>
+      <div class="dish"><div><div class="dn">Saffron &amp; rose ice cream</div><div class="dd">Pistachio crumble</div></div><div class="dp">2.100</div></div>
+      <div class="dish"><div><div class="dn">Luqaimat</div><div class="dd">Date syrup, sesame</div></div><div class="dp">1.900</div></div>
+      <div class="dish"><div><div class="dn">Turkish coffee &amp; baklava</div><div class="dd">For two</div></div><div class="dp">3.400</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section class="reveal" id="gallery" style="background:var(--sand2)">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">The room</div><h2>Sea view, charcoal smoke, good company</h2></div>
+    <div class="gal">
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#12504C"/><circle cx="50" cy="42" r="22" fill="#F6F1E7" opacity=".9"/><path d="M30 70 Q50 55 72 70Z" fill="#C25A3E"/><circle cx="42" cy="40" r="3" fill="#0E3A38"/></svg></div>
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#0E3A38"/><rect x="20" y="30" width="60" height="40" rx="4" fill="#C08A3E" opacity=".85"/><path d="M28 50 h44 M28 58 h30" stroke="#0E3A38" stroke-width="2"/></svg></div>
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#C08A3E"/><circle cx="50" cy="50" r="26" fill="#F6F1E7"/><path d="M35 55 Q50 40 66 54" stroke="#C25A3E" stroke-width="4" fill="none"/></svg></div>
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#12504C"/><path d="M0 68 Q25 58 50 66 T100 64 V100 H0Z" fill="#0E3A38"/><circle cx="72" cy="34" r="14" fill="#D4A45A" opacity=".8"/></svg></div>
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#0E3A38"/><path d="M30 70 L50 30 L70 70Z" fill="#C25A3E" opacity=".9"/><circle cx="50" cy="50" r="6" fill="#F6F1E7"/></svg></div>
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#C25A3E"/><circle cx="50" cy="50" r="28" fill="none" stroke="#F6F1E7" stroke-width="3"/><circle cx="50" cy="50" r="10" fill="#F6F1E7"/></svg></div>
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#12504C"/><rect x="24" y="24" width="52" height="52" rx="26" fill="#F6F1E7" opacity=".9"/><path d="M40 50 h20 M50 40 v20" stroke="#C08A3E" stroke-width="4"/></svg></div>
+      <div class="gcell"><svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#0E3A38"/><path d="M20 60 Q50 40 80 60" stroke="#D4A45A" stroke-width="5" fill="none"/><path d="M20 72 Q50 52 80 72" stroke="#C25A3E" stroke-width="5" fill="none"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- about -->
+<section class="reveal" id="about">
+  <div class="wrap" style="max-width:760px;text-align:center">
+    <div class="eyebrow" style="text-align:center">Our story</div>
+    <h2 class="serif" style="font-size:38px;color:var(--deep);font-weight:500;margin:12px 0 20px">From a single boat to Bahrain's table</h2>
+    <p style="font-size:18px;color:var(--mut)">Bayt Al Bahar began in 2014 with one family, one fishing boat, and a stubborn belief that the Gulf's catch deserved better than the freezer. Today we still buy from the same harbour every morning, still grill over charcoal, and still seat you like family. The sea gives; we simply cook it honestly.</p>
+  </div>
+</section>
+
+<!-- reservation -->
+<section class="reveal" id="reserve">
+  <div class="wrap">
+    <div class="resv">
+      <div>
+        <h2>Reserve your table</h2>
+        <p>Sea-view seating fills fast on weekends. Book ahead and we will have the charcoal ready.</p>
+        <div class="hours">
+          <div><span>Saturday - Thursday</span><span>12:00 - 23:30</span></div>
+          <div><span>Friday</span><span>13:00 - 23:30</span></div>
+          <div><span>Location</span><span>Manama Corniche</span></div>
+          <div><span>Call us</span><span>+973 1700 0000</span></div>
+        </div>
+      </div>
+      <div class="rform">
+        <div class="rrow">
+          <div class="field"><label>Name</label><input id="rn" placeholder="Your name"></div>
+          <div class="field"><label>Guests</label><select id="rg"><option>2 people</option><option>3 people</option><option>4 people</option><option>5 people</option><option>6+ people</option></select></div>
+        </div>
+        <div class="rrow">
+          <div class="field"><label>Date</label><input id="rd" type="date"></div>
+          <div class="field"><label>Time</label><select id="rt"><option>13:00</option><option>14:00</option><option>19:00</option><option>20:00</option><option>21:00</option></select></div>
+        </div>
+        <div class="field"><label>Phone</label><input id="rp" placeholder="+973 ..."></div>
+        <button class="btn brass" style="width:100%;padding:14px" onclick="reserve()">Request booking</button>
+        <div class="rmsg" id="rmsg">✓ Thank you! We've noted your request and will confirm by WhatsApp shortly. (This is a demo - no booking is actually made.)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Bayt Al Bahar</h4>
+        <p>Charcoal seafood on the Manama Corniche since 2014. Fresh Gulf catch, grilled honestly, served with a sea view.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <a href="#">Manama Corniche</a>
+        <a href="#">Kingdom of Bahrain</a>
+        <a href="#">+973 1700 0000</a>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <a href="#">Sat-Thu · 12-23:30</a>
+        <a href="#">Fri · 13-23:30</a>
+        <a href="#reserve">Reserve a table</a>
+      </div>
+    </div>
+    <div class="foot-bottom">A Forvex Systems demo · this is a fictional restaurant · <a href="https://forvexsystems.com" style="color:var(--brass2)">forvexsystems.com</a></div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.menu-tabs').addEventListener('click',e=>{
+  const t=e.target.closest('.tab'); if(!t)return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on')); t.classList.add('on');
+  document.querySelectorAll('.menugroup').forEach(g=>g.classList.remove('on'));
+  document.getElementById(t.dataset.g).classList.add('on');
+});
+function reserve(){
+  const n=document.getElementById('rn').value.trim();
+  const m=document.getElementById('rmsg');
+  m.style.display='block';
+  m.textContent = n ? `✓ Thank you, ${n}! We've noted your request and will confirm by WhatsApp shortly. (Demo - no real booking is made.)`
+                    : `✓ Thank you! We've noted your request and will confirm by WhatsApp shortly. (Demo - no real booking is made.)`;
+  m.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+<script>/* scroll reveal */
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'));return;}
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+})();
+</script>
+</body>
+</html>
